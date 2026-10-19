@@ -1,0 +1,174 @@
+{
+  "url": "assets/audio/boletin.mp3",
+  "urlOpus": "assets/audio/boletin.ogg",
+  "voice": "es_AR-daniela-high",
+  "engine": "Piper TTS",
+  "version": "1.30.6",
+  "generatedAt": "2026-10-19T20:32:31.285Z",
+  "baseRate": 1,
+  "duration": 165.49,
+  "segments": [
+    {
+      "kind": "identificacion",
+      "text": "Tu Canillita, boletín del Alto Valle."
+    },
+    {
+      "kind": "saludo",
+      "text": "Son las cinco y treinta y dos de la tarde. Buenas tardes."
+    },
+    {
+      "kind": "titular",
+      "text": "Ruta 22, con novedad de hoy: el traspaso ya tiene fecha de firma."
+    },
+    {
+      "kind": "desarrollo",
+      "text": "Empecemos por lo de hoy. El gobernador anticipó que el veintinueve de octubre Río Negro firma con Vialidad Nacional el traspaso de las rutas veintidós y ciento cincuenta y uno. Y que las obras arrancan a fines de noviembre, con lo que él llamó reparaciones urgentes. Ahora, qué se traspasa exactamente. Van primero los tramos liberados, los que no tienen contratos pendientes: ciento cuarenta y tres kilómetros entre Río Colorado y Choele Choel, ciento treinta y cinco entre Choele Choel y Chichinales, y cuarenta y nueve de la ciento cincuenta y uno. Quedan afuera setenta y siete kilómetros que siguen comprometidos por obras que Nación tiene que destrabar. Entre esos está el Puente ochenta y tres, en Cipolletti, que es uno de los puntos más complicados: la calzada se deterioró con las lluvias, pero la provincia no puede meter mano hasta que se resuelva un contrato de obra inconclusa. Y la plata. El crédito de sesenta millones de dólares del Fonplata ya tiene el aval de Nación como garante, y el expediente va al directorio del banco en noviembre. Pero el propio Weretilneck dijo que el financiamiento grande recién llegaría en marzo o abril del año que viene. Hasta entonces se trabaja con los siete mil millones de pesos del aporte de Oldelval, que alcanzan para bacheo y para cuatro puntos críticos."
+    },
+    {
+      "kind": "separador",
+      "text": "Seguimos."
+    },
+    {
+      "kind": "titular",
+      "text": "Vamos ahora a la pregunta de fondo. Por qué la ruta sigue sin terminarse."
+    },
+    {
+      "kind": "separador",
+      "text": "Vamos con la que sigue."
+    },
+    {
+      "kind": "titular",
+      "text": "Vaca Muerta, y una pieza que faltaba y ya está en Río Negro."
+    },
+    {
+      "kind": "separador",
+      "text": "Y ahora, otro tema."
+    },
+    {
+      "kind": "titular",
+      "text": "Vamos con una obra que puede cambiar el agua de Roca para los próximos veinte años."
+    },
+    {
+      "kind": "separador",
+      "text": "Seguimos."
+    },
+    {
+      "kind": "titular",
+      "text": "La fruta, que cerró una temporada rara y ya arrancó la que viene."
+    },
+    {
+      "kind": "separador",
+      "text": "Vamos con la que sigue."
+    },
+    {
+      "kind": "titular",
+      "text": "El tiempo, que en esta época no es charla: es la temporada."
+    },
+    {
+      "kind": "desarrollo",
+      "text": "Ya pasamos el frío polar de agosto. Lo de ahora son las heladas tardías, que es otra cosa y es más seria, porque el árbol está en flor y la flor se quema. En septiembre hubo tres noches complicadas. La peor fue la del doce, con pronósticos de hasta siete grados bajo cero y peligro alto declarado por el INTA Alto Valle y la Autoridad Interjurisdiccional de Cuencas, para Guerrico, Centenario, Cipolletti, Roca, Villa Regina, Luis Beltrán y Río Colorado. Los duraznos y las ciruelas estaban en flor abierta, que es el estado más sensible: en la ciruela, con un grado bajo cero ya hay daño. La defensa principal es el riego por aspersión. Se moja el frutal, y el hielo que se forma encima lo protege. Suena al revés, pero funciona. Y la foto de ahora. El valle está en plena floración y la impresión es buena: un productor lo resumió diciendo que está todo explotado de flores. Pero conviene no cantar victoria. El riesgo de heladas sigue hasta la primera semana de noviembre, el granizo puede aparecer hasta la cosecha, y el número de verdad se sabe recién con el cuaje."
+    },
+    {
+      "kind": "separador",
+      "text": "Y vamos a los deportes."
+    },
+    {
+      "kind": "deportes",
+      "text": "Y el hilo de Messi, que esta semana se cerró."
+    },
+    {
+      "kind": "separador",
+      "text": "Y vamos a los deportes."
+    },
+    {
+      "kind": "deportes",
+      "text": "Atención, que esto es contenido ficticio, inventado para probar el sistema."
+    },
+    {
+      "kind": "cierre",
+      "text": "Fue Tu Canillita, que sigue la historia con vos. Buen día."
+    }
+  ],
+  "marks": [
+    {
+      "segment": 0,
+      "start": 0.0
+    },
+    {
+      "segment": 1,
+      "start": 2.552
+    },
+    {
+      "segment": 2,
+      "start": 5.654
+    },
+    {
+      "segment": 3,
+      "start": 10.047
+    },
+    {
+      "segment": 4,
+      "start": 70.281
+    },
+    {
+      "segment": 5,
+      "start": 71.556
+    },
+    {
+      "segment": 6,
+      "start": 75.95
+    },
+    {
+      "segment": 7,
+      "start": 77.728
+    },
+    {
+      "segment": 8,
+      "start": 81.612
+    },
+    {
+      "segment": 9,
+      "start": 83.462
+    },
+    {
+      "segment": 10,
+      "start": 87.855
+    },
+    {
+      "segment": 11,
+      "start": 89.112
+    },
+    {
+      "segment": 12,
+      "start": 93.03
+    },
+    {
+      "segment": 13,
+      "start": 94.785
+    },
+    {
+      "segment": 14,
+      "start": 98.513
+    },
+    {
+      "segment": 15,
+      "start": 151.127
+    },
+    {
+      "segment": 16,
+      "start": 153.041
+    },
+    {
+      "segment": 17,
+      "start": 155.806
+    },
+    {
+      "segment": 18,
+      "start": 157.738
+    },
+    {
+      "segment": 19,
+      "start": 162.33
+    }
+  ]
+}
