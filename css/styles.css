@@ -1,0 +1,705 @@
+/*
+ * styles.css — Tu Canillita
+ * ---------------------------------
+ * Mobile first. Identidad de diario de provincia: chapa en negativo, filetes
+ * horizontales, volantas en recuadro y el ocre de las bardas como acento.
+ * El canal se sugiere, no se copia: colores y tipografías propias.
+ *
+ * Tokens en :root — cambiar acá cambia todo.
+ */
+
+:root {
+  /* Color — tinta sobre papel, con el ocre de las bardas como único acento */
+  --tinta:        #1A1A18;
+  --tinta-suave:  #6A6357;
+  --papel:        #F7F4EE;
+  --papel-viejo:  #EDE8DC;
+  --burbuja-in:   #FDFCF9;
+  --burbuja-out:  #E7DFCE;
+  --ocre:         #9A5B1E;
+  --ocre-claro:   #F2E7D8;
+  --destacado:    #EBD9B4;
+  --rojo:         #8C1D18;
+
+  /* Señal: se usa SOLO para "esto cambió". Si aparece en otro lado pierde el
+     significado, que es exactamente lo que le pasó al ocre. */
+  --senal:        #0E4C5C;
+  --senal-vivo:   #37D0E8;
+  --senal-suave:  #8FD8E6;
+  --senal-papel:  #EAF6F8;
+  /* Tonos que estaban escritos a mano en el resto de la hoja */
+  --tinta-clara:  #B3AB98;
+  --ocre-vivo:    #C9922B;
+  --ocre-hondo:   #7C4818;
+  --ocre-papel:   #FBF0D8;
+  --rojo-papel:   #FBEDEB;
+  --rojo-hondo:   #7A2018;
+  --senal-honda:  #0A3A46;
+  --papel-tenue:  #F2F0EB;
+
+  /* Acento del ecosistema. En el tema propio no se usa. */
+  --marca:        transparent;
+  --marca-papel:  transparent;
+
+  --linea:        rgba(26, 26, 24, .18);
+  --filete:       rgba(26, 26, 24, .55);
+
+  /* Tipografía: serifa para leer, condensada para la chapa y las volantas */
+  --display:    Georgia, "Iowan Old Style", "Times New Roman", serif;
+  --condensada: "Arial Narrow", "Roboto Condensed", "Liberation Sans Narrow",
+                "Helvetica Neue", Arial, sans-serif;
+  --texto:      Georgia, "Iowan Old Style", "Times New Roman", serif;
+  --interfaz:   system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+  /* Un diario no tiene esquinas redondeadas */
+  --radio: 2px;
+  --gap: 12px;
+  --ancho: 480px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--interfaz);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}
+
+/* Foco visible siempre: requisito de accesibilidad básica */
+:focus-visible {
+  outline: 3px solid var(--destacado);
+  outline-offset: 2px;
+}
+
+/* ------------------------------------------------------------- cabecera */
+
+/* La chapa va en negativo, como el cabezal impreso de un diario local */
+.masthead {
+  padding: 10px 16px 8px;
+  background: var(--tinta);
+  color: var(--papel);
+}
+
+.masthead__eyebrow {
+  margin: 0;
+  font-family: var(--condensada);
+  font-size: .68rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--tinta-clara);
+}
+
+.masthead__title {
+  margin: 1px 0 0;
+  font-family: var(--condensada);
+  /* font-stretch ayuda donde la variante estrecha existe pero no tiene nombre */
+  font-stretch: 87.5%;
+  font-size: clamp(1.45rem, 6.4vw, 1.9rem);
+  font-weight: 400;
+  letter-spacing: .02em;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.masthead__line {
+  margin: 3px 0 0;
+  font-family: var(--display);
+  font-size: .78rem;
+  font-style: italic;
+  color: var(--tinta-clara);
+}
+
+/* Fecha y edición, entre filetes: el corondel del diario */
+.dateline {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  max-width: var(--ancho);
+  margin: 0 auto;
+  padding: 6px 16px;
+  border-bottom: 2px solid var(--tinta);
+  font-family: var(--interfaz);
+  font-size: .76rem;
+  color: var(--tinta-suave);
+}
+
+/*
+ * Edición Río Negro.
+ *
+ * No es otra hoja de estilos ni otra aplicación: solo cambian el acento y el
+ * negro exacto. El ocre sigue siendo el color de Tu Canillita; el rojo de la
+ * cabecera del diario aparece únicamente donde habla el ecosistema:
+ * procedencia, marcas y el esquema de integración.
+ *
+ * El rojo está medido sobre el logotipo: el trazo es plano, un solo valor en
+ * el 100% de los píxeles. Sobre el papel da 4,64:1 y con blanco encima 5,10:1,
+ * así que pasa AA en los dos sentidos. Sobre el negro de la chapa cae a
+ * 3,54:1, y por eso ahí se usa solo en separadores y filetes, nunca en texto
+ * chico.
+ */
+:root[data-tema="grupo"] {
+  --tinta:        #16161A;   /* el negro de la cabecera */
+  --marca:        #DE0303;   /* el rojo del logotipo, medido */
+  --marca-papel:  #FCEBEB;   /* el mismo rojo al 8% */
+  --senal:        #1F3A5F;   /* azul de apoyo, para lo que cambió */
+  --senal-vivo:   #3F7CB0;
+  --senal-suave:  #A3C2DC;
+  --senal-papel:  #EDF3F9;
+  --linea:        rgba(22, 22, 26, .18);
+  --filete:       rgba(22, 22, 26, .55);
+}
+
+/*
+ * El ocre sigue siendo el acento y acá no se cambia de raíz: teñir --ocre de
+ * rojo se llevaría puestas la cronología, los números y las pestañas, que ya
+ * funcionan como están.
+ *
+ * La excepción es el lector elegido. Es lo único de esa pantalla que queda
+ * pintado con el color de la otra identidad, y se nota: la cabecera dice rojo
+ * y el botón activo contesta marrón.
+ */
+:root[data-tema="grupo"] .persona.is-activa {
+  background: var(--marca);
+  border-color: var(--marca);
+}
+
+/* --------------------------------------------------------------- página */
+
+.stage {
+  max-width: var(--ancho);
+  margin: 0 auto;
+  padding: 16px 12px 32px;
+}
+
+/* ------------------------------------------------------------- teléfono */
+
+.phone {
+  display: flex;
+  flex-direction: column;
+  background: var(--papel-viejo);
+  border: 1px solid var(--filete);
+  overflow: hidden;
+}
+
+.phone__bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  background: var(--tinta);
+  color: var(--papel);
+}
+
+.phone__avatar {
+  width: 36px; height: 36px;
+  flex: 0 0 36px;
+  display: grid;
+  place-items: center;
+  background: var(--ocre);
+  color: var(--papel);
+  font-family: var(--condensada);
+  font-size: .9rem;
+  letter-spacing: .05em;
+}
+
+.phone__id { min-width: 0; }
+
+.phone__name {
+  margin: 0;
+  font-family: var(--condensada);
+  font-stretch: 87.5%;
+  font-size: .98rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.phone__status {
+  margin: 0;
+  font-family: var(--display);
+  font-size: .72rem;
+  font-style: italic;
+  color: var(--tinta-clara);
+}
+
+/* Nota del editor, no cartel de advertencia */
+.phone__disclaimer {
+  margin: 0;
+  padding: 5px 12px;
+  background: var(--papel);
+  border-bottom: 1px solid var(--filete);
+  font-family: var(--condensada);
+  font-size: .7rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--tinta-suave);
+}
+
+/* ----------------------------------------------------------- mensajería */
+
+.chat-log {
+  height: clamp(280px, 46vh, 520px);
+  overflow-y: auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  scroll-behavior: smooth;
+}
+
+.msg {
+  display: flex;
+  max-width: 92%;
+}
+
+.msg--in  { align-self: flex-start; }
+.msg--out { align-self: flex-end; max-width: 82%; }
+
+/* El agente habla desde el papel: sin globo de color, con filete */
+.bubble {
+  position: relative;
+  padding: 10px 12px 22px;
+  background: var(--burbuja-in);
+  border: 1px solid var(--linea);
+  border-top: 2px solid var(--tinta);
+  font-family: var(--display);
+  font-size: .95rem;
+  line-height: 1.55;
+  word-wrap: break-word;
+}
+
+/* El lector, en el margen: recuadro simple sin filete superior */
+.msg--out .bubble {
+  background: var(--burbuja-out);
+  border: 1px solid var(--linea);
+  border-top: 1px solid var(--linea);
+  font-family: var(--interfaz);
+  font-size: .9rem;
+}
+
+.bubble__text strong {
+  font-family: var(--condensada);
+  font-weight: 400;
+  font-size: 1.06em;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+}
+
+.bubble__text em {
+  font-style: italic;
+  color: var(--tinta-suave);
+}
+
+.bubble time {
+  position: absolute;
+  right: 10px;
+  bottom: 6px;
+  font-family: var(--condensada);
+  font-size: .68rem;
+  letter-spacing: .06em;
+  color: var(--tinta-suave);
+}
+
+/* Guion de radio: se lee como texto aunque no haya voz */
+.msg--script .bubble {
+  background: var(--ocre-claro);
+  border-top-color: var(--ocre);
+}
+
+.bubble__tag {
+  font-family: var(--condensada);
+  font-size: .68rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ocre);
+  margin-bottom: 6px;
+}
+
+/* Enlaces a la edición: pie de nota, no botón de app */
+.bubble__links {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 10px;
+  border-top: 1px solid var(--linea);
+}
+
+.bubble__link {
+  display: block;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--linea);
+  color: var(--ocre);
+  font-family: var(--interfaz);
+  font-size: .88rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.bubble__link:last-child { border-bottom: 0; }
+.bubble__link:hover { color: var(--tinta); }
+
+/* Mensaje de audio: reproductor + guion siempre visible */
+.msg--audio .bubble {
+  background: var(--ocre-claro);
+  border-top-color: var(--ocre);
+}
+
+.audio {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--linea);
+}
+
+.audio__play,
+.audio__stop {
+  flex: 0 0 auto;
+  width: 42px; height: 42px;
+  border: 0;
+  border-radius: 0;
+  background: var(--ocre);
+  color: var(--papel);
+  font-size: .95rem;
+  cursor: pointer;
+}
+
+.audio__stop {
+  width: 36px; height: 36px;
+  background: transparent;
+  border: 1px solid var(--tinta-suave);
+  color: var(--tinta-suave);
+  font-size: .7rem;
+}
+
+.audio__info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.audio__title {
+  font-family: var(--condensada);
+  font-size: .95rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.audio__state {
+  font-family: var(--interfaz);
+  font-size: .72rem;
+  color: var(--tinta-suave);
+}
+
+.msg--audio .guion__texto { padding-top: 10px; }
+
+.msg--audio .guion__linea {
+  margin: 0 0 10px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: var(--display);
+  font-size: .92rem;
+  line-height: 1.6;
+  transition: background .2s ease;
+}
+
+/* La línea que se está diciendo en voz alta */
+.guion__linea.is-speaking {
+  background: var(--destacado);
+  box-shadow: -4px 0 0 var(--ocre);
+}
+
+/* Fecha del dato y fuentes: parte del contrato de confianza */
+.meta {
+  margin-top: 10px;
+  font-family: var(--interfaz);
+  font-size: .75rem;
+  color: var(--tinta-suave);
+}
+
+.sources {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--filete);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.sources__label {
+  font-family: var(--condensada);
+  font-size: .68rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+}
+
+.sources a,
+.sources span:not(.sources__label) {
+  font-family: var(--interfaz);
+  font-size: .76rem;
+  color: var(--ocre);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Indicador de escritura */
+.bubble--typing {
+  display: flex;
+  gap: 4px;
+  padding: 12px 14px;
+  background: var(--burbuja-in);
+}
+
+.bubble--typing span {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--tinta-suave);
+  opacity: .45;
+  animation: blink 1.1s infinite ease-in-out;
+}
+
+.bubble--typing span:nth-child(2) { animation-delay: .18s; }
+.bubble--typing span:nth-child(3) { animation-delay: .36s; }
+
+@keyframes blink {
+  0%, 60%, 100% { opacity: .25; transform: translateY(0); }
+  30%           { opacity: .9;  transform: translateY(-3px); }
+}
+
+/* --------------------------------------------------- respuestas rápidas */
+
+.quick-replies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 12px;
+  /* Con menús largos la zona crecía demasiado: se limita y hace scroll */
+  max-height: 148px;
+  overflow-y: auto;
+  background: var(--papel-viejo);
+  border-top: 1px solid var(--linea);
+}
+
+/* Botones de sección, como los recuadros de una portada */
+.quick {
+  min-height: 44px;
+  padding: 8px 13px;
+  border: 1px solid var(--filete);
+  border-radius: 0;
+  background: var(--burbuja-in);
+  color: var(--tinta);
+  font-family: var(--interfaz);
+  font-size: .88rem;
+  cursor: pointer;
+}
+
+/* display:flex le gana al atributo hidden si no lo decimos explícitamente */
+.quick-replies[hidden] { display: none; }
+
+.quick:hover { background: var(--ocre); border-color: var(--ocre); color: var(--papel); }
+.quick:active { transform: translateY(1px); }
+
+/* ------------------------------------------------------------ redactor */
+
+.composer {
+  display: flex;
+  gap: 8px;
+  padding: 10px 12px;
+  background: var(--papel);
+  border-top: 1px solid var(--linea);
+}
+
+.composer__input {
+  flex: 1;
+  min-width: 0;
+  min-height: 46px;
+  padding: 10px 12px;
+  border: 1px solid var(--filete);
+  border-radius: 0;
+  background: var(--burbuja-in);
+  font-family: var(--interfaz);
+  font-size: 1rem;
+  color: var(--tinta);
+}
+
+.composer__send {
+  width: 46px; height: 46px;
+  flex: 0 0 46px;
+  border: 0;
+  border-radius: 0;
+  background: var(--tinta);
+  color: var(--papel);
+  font-size: 1.05rem;
+  cursor: pointer;
+}
+
+.composer__send:hover { background: var(--ocre-hondo); }
+
+/* Mientras el agente escribe, el redactor se ve apagado */
+.composer__input:disabled { background: var(--papel-tenue); color: var(--tinta-suave); }
+.composer__send:disabled { background: var(--tinta-suave); cursor: default; }
+
+/* --------------------------------------------------------------- notas */
+
+.notes {
+  margin-top: 20px;
+  padding: 14px 16px;
+  background: var(--burbuja-in);
+  border: 1px solid var(--filete);
+}
+
+.notes__title {
+  margin: 0 0 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--filete);
+  font-family: var(--condensada);
+  font-size: 1rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.notes__list {
+  margin: 0;
+  padding-left: 18px;
+  font-family: var(--display);
+  font-size: .92rem;
+  line-height: 1.5;
+  color: var(--tinta-suave);
+}
+
+.notes__list li { margin-bottom: 5px; }
+
+.notes__links {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 14px 0 0;
+}
+
+.notes__links a {
+  font-family: var(--interfaz);
+  font-size: .88rem;
+  font-weight: 600;
+  color: var(--ocre);
+  text-decoration: none;
+}
+
+.notes__links a:hover { text-decoration: underline; }
+
+.notes__foot {
+  margin: 12px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--linea);
+  font-size: .74rem;
+  color: var(--tinta-suave);
+}
+
+.notes__source { display: block; margin-top: 2px; }
+
+/* ------------------------------------------------------- pantalla ancha */
+
+@media (min-width: 900px) {
+  .stage {
+    max-width: 940px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 24px;
+    align-items: start;
+    padding-top: 24px;
+  }
+  .notes { margin-top: 0; position: sticky; top: 24px; }
+  .chat-log { height: 66vh; }
+}
+
+/* --------------------------------------------------------- accesibilidad */
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: .001ms !important; animation-iteration-count: 1 !important; }
+  .chat-log { scroll-behavior: auto; }
+}
+
+/* --------------------------------------------- escuchar una respuesta */
+
+.msg--clip { max-width: 88%; }
+
+.clip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px 8px 8px;
+  border: 1px solid var(--linea);
+  border-left: 4px solid var(--ocre);
+  background: var(--burbuja-in);
+}
+
+.clip__play {
+  flex: 0 0 auto;
+  width: 34px; height: 34px;
+  border: 0;
+  border-radius: 0;
+  background: var(--ocre);
+  color: var(--papel);
+  font-size: .8rem;
+  cursor: pointer;
+}
+
+.clip__label {
+  font-family: var(--interfaz);
+  font-size: .86rem;
+  color: var(--tinta);
+}
+
+/* La chapa dentro de las páginas lleva el enlace de vuelta arriba */
+.masthead .volver {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--ocre-claro);
+}
+
+/* --------------------------------------------------- barra de secciones */
+
+/* Acceso permanente a la edición y a la historia, como las secciones
+   de la portada de un diario. No depende de ningún botón del chat. */
+.secciones {
+  display: flex;
+  gap: 18px;
+  max-width: var(--ancho);
+  margin: 0 auto;
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--filete);
+}
+
+.secciones a {
+  font-family: var(--interfaz);
+  font-size: .92rem;
+  font-weight: 600;
+  color: var(--tinta);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+
+.secciones a:hover { border-bottom-color: var(--ocre); color: var(--ocre); }
+
+/* El canal real, a la vista dentro del simulador */
+.phone__disclaimer a {
+  color: var(--ocre);
+  font-weight: 600;
+}

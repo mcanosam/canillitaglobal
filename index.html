@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tu Canillita · noticias del Alto Valle</title>
+  <meta name="description" content="Noticias del Alto Valle de Río Negro. Elegís qué seguir y lo recibís como texto, audio o edición visual.">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body class="page">
+
+  <header class="masthead">
+    <p class="masthead__eyebrow">Alto Valle · Río Negro</p>
+    <h1 class="masthead__title">Tu Canillita</h1>
+    <p class="masthead__line" id="masthead-line">Noticias del valle, todos los días</p>
+    <div id="masthead-marcas"></div>
+  </header>
+
+  <p class="dateline">
+    <span id="today-label">—</span>
+    <span><span id="edicion-label">Demostración</span> <span id="version-label"></span></span>
+  </p>
+
+  <nav class="secciones" id="secciones" aria-label="Secciones"></nav>
+
+  <div id="personas"></div>
+
+  <!-- Dos vistas del mismo diario: todo lo publicado, o solo lo que elegiste -->
+  <div class="vistas" role="group" aria-label="Vista de la portada">
+    <button type="button" class="vista" data-vista="todo">Todo</button>
+    <button type="button" class="vista is-activa" data-vista="mia">Mi edición</button>
+  </div>
+
+  <!-- Franja de temas: al tocar uno, la portada se rearma -->
+  <section class="temas" id="franja-temas" aria-label="Elegí tus temas">
+    <p class="temas__rotulo">Elegí qué seguir</p>
+    <div class="temas__chips" id="temas"></div>
+    <p class="temas__aviso" id="temas-aviso" role="status"></p>
+  </section>
+
+  <main class="page__body">
+    <div id="portada"></div>
+
+    <section class="bloque bloque--boletin" id="bloque-boletin" hidden>
+      <h2 class="bloque__titulo">Boletín de hoy</h2>
+      <p class="bloque__bajada" id="boletin-meta"></p>
+      <div id="boletin-player"></div>
+    </section>
+
+    <div id="programacion"></div>
+  </main>
+
+  <!-- El canal real: la conversación vive en Telegram -->
+  <aside class="canal">
+    <p class="canal__frase">Conversá con el diario</p>
+    <p class="canal__nota">Hoy por Telegram. Más adelante, por WhatsApp.</p>
+    <div class="canal__acciones">
+      <a class="btn btn--primary" href="https://t.me/tucanillitaglobal_bot" target="_blank" rel="noopener">Abrir en Telegram</a>
+      <a class="btn btn--ghost" href="pages/chat.html">Probar acá</a>
+    </div>
+  </aside>
+
+  <footer class="page__foot">
+    <p>Tu Canillita · demostración sin servicios pagos.</p>
+    <p id="preparada"></p>
+  </footer>
+
+  <script src="content/content.bundle.js"></script>
+  <script src="js/version.js"></script>
+  <script src="js/router.js"></script>
+  <script src="js/tema.js"></script>
+  <script src="js/content.js"></script>
+  <script src="js/preferences.js"></script>
+  <script src="js/personas.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/radio.js"></script>
+  <script src="js/recorrido.js"></script>
+  <script src="js/portada.js"></script>
+</body>
+</html>

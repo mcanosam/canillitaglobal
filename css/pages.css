@@ -1,0 +1,1919 @@
+/*
+ * pages.css — edición personalizada e historia viva
+ * -------------------------------------------------
+ * Usa los tokens de styles.css. Acá va solo lo propio de las páginas largas.
+ *
+ * Criterio de diario de provincia: chapa en negativo, filetes horizontales,
+ * volantas en recuadro ocre y todo el texto de lectura en serifa. El estado de
+ * cada tramo se lee de un vistazo sin depender únicamente del color.
+ */
+
+.page {
+  background: var(--papel);
+}
+
+.page__body {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 16px 40px;
+}
+
+.page__foot {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
+  border-top: 1px solid var(--linea);
+  font-size: .76rem;
+  color: var(--tinta-suave);
+}
+
+.page__foot p { margin: 2px 0; }
+
+.volver {
+  display: inline-block;
+  margin-bottom: 12px;
+  font-size: .84rem;
+  font-weight: 600;
+  color: var(--ocre);
+  text-decoration: none;
+}
+
+.volver:hover { text-decoration: underline; }
+
+/* --------------------------------------------------- cabecera de edición */
+
+.edicion-head {
+  padding: 0 0 14px;
+  border-bottom: 2px solid var(--tinta);
+}
+
+.edicion-head > * {
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.edicion-head .volver { display: block; padding-top: 10px; }
+
+.edicion-head__saludo {
+  margin: 12px auto 4px;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--tinta-suave);
+}
+
+.edicion-head__meta {
+  margin: 0 auto;
+  font-family: var(--interfaz);
+  font-size: .82rem;
+  color: var(--tinta-suave);
+}
+
+.edicion-head__intereses {
+  margin: 12px auto 0;
+  font-family: var(--interfaz);
+  font-size: .84rem;
+  color: var(--tinta-suave);
+}
+
+.tag {
+  display: inline-block;
+  margin: 2px 0 2px 6px;
+  padding: 3px 9px;
+  border: 1px solid var(--filete);
+  background: transparent;
+  color: var(--tinta);
+  font-weight: 600;
+}
+
+/* ----------------------------------------------- cabecera historia viva */
+
+.viva-head {
+  padding: 18px 16px 22px;
+  background: var(--tinta);
+  color: var(--papel);
+}
+
+.viva-head > * {
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.viva-head .volver { color: var(--destacado); display: block; }
+
+.viva-head__eyebrow {
+  margin: 10px auto 0;
+  font-family: var(--condensada);
+  font-size: .72rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--ocre-claro);
+}
+
+.viva-head__titulo {
+  margin: 4px auto 6px;
+  font-family: var(--condensada);
+  font-stretch: 87.5%;
+  font-size: clamp(2rem, 10vw, 2.8rem);
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.viva-head__bajada {
+  margin: 0 auto;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.45;
+  opacity: .92;
+}
+
+.viva-head__meta {
+  margin: 10px auto 0;
+  font-size: .76rem;
+  opacity: .7;
+}
+
+.viva-head__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+/* Índice pegajoso: la historia es larga */
+.indice {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  padding: 8px 16px;
+  background: var(--papel);
+  border-bottom: 1px solid var(--linea);
+}
+
+.indice a {
+  flex: 0 0 auto;
+  padding: 7px 10px;
+  border-radius: 0;
+  font-family: var(--interfaz);
+  font-size: .88rem;
+  font-weight: 600;
+  color: var(--tinta-suave);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.indice a:hover { background: var(--ocre-claro); color: var(--ocre); }
+
+/* -------------------------------------------------------------- bloques */
+
+.bloque {
+  padding: 26px 0;
+  border-bottom: 1px solid var(--linea);
+  scroll-margin-top: 56px;
+}
+
+.bloque__titulo {
+  margin: 0 0 10px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid var(--tinta);
+  font-family: var(--condensada);
+  font-size: 1.05rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.bloque__sub {
+  margin: 22px 0 10px;
+  font-family: var(--condensada);
+  font-size: .88rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+}
+
+.bloque__bajada {
+  margin: 0 0 14px;
+  font-size: .9rem;
+  color: var(--tinta-suave);
+}
+
+/* --------------------------------------------------------------- notas */
+
+.nota {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--linea);
+}
+
+.nota--principal .nota__titulo { font-size: 1.75rem; }
+
+/* La volanta va en recuadro ocre, como el rótulo de sección impreso */
+/* La volanta va en texto, no en recuadro: el ocre relleno se repetía tanto
+   que había dejado de ser un acento */
+.nota__eyebrow {
+  display: block;
+  margin: 0 0 5px;
+  padding: 0;
+  color: var(--ocre);
+  font-family: var(--condensada);
+  font-size: .78rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.nota__titulo {
+  margin: 0 0 6px;
+  font-family: var(--display);
+  font-size: 1.45rem;
+  line-height: 1.14;
+}
+
+.nota__bajada {
+  margin: 0 0 10px;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--tinta-suave);
+}
+
+.nota__lectura {
+  margin: 0 0 12px;
+  font-family: var(--interfaz);
+  font-size: .78rem;
+  color: var(--tinta-suave);
+}
+
+.nota__resumen {
+  margin: 0 0 14px;
+  font-family: var(--display);
+  font-size: 1.02rem;
+  line-height: 1.65;
+}
+
+.nota__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+/* Aviso de contenido ficticio: imposible de pasar por alto */
+.fiction {
+  margin: 0 0 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--rojo);
+  background: transparent;
+  color: var(--rojo);
+  font-family: var(--condensada);
+  font-size: .88rem;
+  letter-spacing: .04em;
+}
+
+/* ----------------------------------------------------------- desplegable */
+
+.mas { margin-top: 6px; }
+
+.mas__btn {
+  display: inline-block;
+  padding: 11px 16px;
+  border: 1px solid var(--filete);
+  border-radius: 0;
+  background: transparent;
+  color: var(--tinta);
+  font-family: var(--condensada);
+  font-size: .9rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  list-style: none;
+}
+
+.mas__btn::-webkit-details-marker { display: none; }
+.mas[open] .mas__btn { background: var(--tinta); border-color: var(--tinta); color: var(--papel); }
+
+.mas__cuerpo { padding-top: 16px; }
+
+.mas__sub {
+  margin: 22px 0 8px;
+  font-size: .74rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+}
+
+/* ------------------------------------------------------------- artículo */
+
+.article p {
+  margin: 0 0 14px;
+  font-family: var(--display);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.article__heading {
+  margin: 24px 0 10px;
+  font-family: var(--condensada);
+  font-size: 1.05rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.destacado {
+  margin: 0 0 18px;
+  font-family: var(--display);
+  font-size: 1.15rem;
+  line-height: 1.55;
+}
+
+/* Letra capitular: el gesto que dice "esto es una nota", no una pantalla */
+.destacado::first-letter {
+  float: left;
+  margin: 4px 7px 0 0;
+  font-size: 3.1rem;
+  line-height: .8;
+  color: var(--ocre);
+}
+
+.importa {
+  margin: 18px 0;
+  padding: 14px 16px;
+  background: var(--ocre-claro);
+  border-left: 4px solid var(--ocre);
+  border-radius: 0;
+}
+
+.importa h3 {
+  margin: 0 0 6px;
+  font-family: var(--condensada);
+  font-size: .8rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ocre);
+}
+
+.importa p { margin: 0; font-size: .94rem; line-height: 1.6; }
+
+/* --------------------------------------------- qué sabemos / qué falta */
+
+.saber {
+  display: grid;
+  gap: 14px;
+  margin: 18px 0;
+}
+
+.saber__col {
+  padding: 14px 16px;
+  background: var(--burbuja-in);
+  border: 1px solid var(--linea);
+  border-top: 3px solid var(--tinta);
+  border-radius: 0;
+}
+
+.saber__col h3 {
+  margin: 0 0 10px;
+  font-family: var(--condensada);
+  font-size: .82rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--tinta);
+}
+
+.facts {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.facts li {
+  position: relative;
+  margin-bottom: 12px;
+  padding-left: 24px;
+  font-size: .92rem;
+  line-height: 1.55;
+}
+
+.facts li::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: .95rem;
+}
+
+.facts--confirmed li::before { content: "✔"; color: var(--ocre); }
+.facts--pending li::before { content: "?"; color: var(--rojo); font-weight: 700; }
+
+.fact__date {
+  display: block;
+  margin-top: 3px;
+  font-size: .72rem;
+  color: var(--tinta-suave);
+}
+
+/* --------------------------------------------------------------- tramos */
+
+.tramos {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tramo {
+  margin-bottom: 10px;
+  padding: 13px 15px;
+  background: var(--burbuja-in);
+  border: 1px solid var(--linea);
+  border-left: 5px solid var(--tinta-suave);
+  border-radius: 0;
+  scroll-margin-top: 62px;
+}
+
+.tramo--done    { border-left-color: var(--ocre); }
+.tramo--partial { border-left-color: var(--ocre-vivo); }
+.tramo--blocked { border-left-color: var(--rojo); }
+
+.tramo__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.tramo__name {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 1.05rem;
+}
+
+/* El texto del chip dice el estado: no depende solo del color */
+.chip {
+  flex: 0 0 auto;
+  padding: 3px 8px;
+  border-radius: 0;
+  font-family: var(--interfaz);
+  font-size: .74rem;
+  font-weight: 600;
+}
+
+.chip--done    { background: var(--ocre-claro); color: var(--ocre); }
+.chip--partial { background: var(--ocre-papel); color: var(--ocre-hondo); }
+.chip--blocked { background: var(--rojo-papel); color: var(--rojo-hondo); }
+
+.tramo__traza {
+  margin: 0 0 6px;
+  font-size: .8rem;
+  color: var(--tinta-suave);
+}
+
+.tramo__estado {
+  margin: 0;
+  font-size: .9rem;
+  font-weight: 600;
+}
+
+.tramo__detalle {
+  margin: 8px 0 0;
+  font-size: .9rem;
+  line-height: 1.55;
+  color: var(--tinta-suave);
+}
+
+/* ----------------------------------------------------------- cronología */
+
+.cronologia {
+  margin: 0;
+  padding: 0 0 0 22px;
+  list-style: none;
+  border-left: 2px solid var(--linea);
+}
+
+.hito {
+  position: relative;
+  padding: 0 0 22px 6px;
+}
+
+.hito::before {
+  content: "";
+  position: absolute;
+  left: -28px;
+  top: 6px;
+  width: 9px; height: 9px;
+  background: var(--ocre);
+  border: 2px solid var(--papel);
+}
+
+.hito__date {
+  display: block;
+  font-family: var(--interfaz);
+  font-size: .76rem;
+  font-weight: 600;
+  color: var(--ocre);
+}
+
+.hito__title {
+  margin: 3px 0 4px;
+  font-family: var(--display);
+  font-size: 1.02rem;
+}
+
+.hito__text {
+  margin: 0;
+  font-size: .9rem;
+  line-height: 1.55;
+}
+
+.hito__source {
+  margin: 4px 0 0;
+  font-size: .72rem;
+  color: var(--tinta-suave);
+}
+
+/* Un capítulo con fecha que todavía no ocurrió. El punto va hueco y el texto
+   más tenue: tiene que leerse como agenda, nunca como hecho consumado.
+   No se usa --senal acá: ese color significa "esto cambió" y nada más. */
+
+.hito--proximo::before {
+  background: var(--papel);
+  border-color: var(--ocre);
+}
+
+.hito--proximo .hito__title,
+.hito--proximo .hito__text {
+  color: var(--tinta-suave);
+}
+
+.hito__pendiente {
+  display: inline-block;
+  margin: 2px 0 0;
+  padding: 1px 6px;
+  border: 1px dashed var(--tinta-clara);
+  font-family: var(--interfaz);
+  font-size: .66rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+}
+
+/* -------------------------------------------------------------- fuentes */
+
+.fuentes {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.fuente {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--linea);
+  font-family: var(--display);
+  font-size: .92rem;
+}
+
+.fuente a { color: var(--tinta); text-decoration: none; }
+.fuente a:hover { text-decoration: underline; }
+
+.fuente__meta {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--interfaz);
+  font-size: .78rem;
+  color: var(--tinta-suave);
+}
+
+/* ------------------------------------------------------------- boletín */
+
+.bloque--audio .btn { margin-top: 4px; }
+
+.reproductor {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.reproductor__estado {
+  margin: 10px 0 0;
+  font-size: .78rem;
+  color: var(--tinta-suave);
+}
+
+.btn:disabled { opacity: .45; cursor: default; }
+
+.guion__linea {
+  margin: 0 0 12px;
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-family: var(--display);
+  font-size: 1rem;
+  line-height: 1.7;
+  transition: background .2s ease;
+}
+
+/* La frase que se está diciendo en voz alta */
+.guion__linea.is-speaking {
+  background: var(--destacado);
+  font-weight: 600;
+}
+
+.guion {
+  margin-top: 16px;
+  padding: 16px;
+  background: var(--ocre-claro);
+  border-left: 4px solid var(--ocre);
+  border-radius: 0;
+}
+
+.guion__aviso {
+  margin: 0 0 12px;
+  font-size: .76rem;
+  color: var(--tinta-suave);
+}
+
+.guion__texto p {
+  margin: 0 0 12px;
+  font-family: var(--display);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* ------------------------------------------------------------ preguntar */
+
+.ask {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.ask__input {
+  flex: 1;
+  min-width: 0;
+  min-height: 46px;
+  padding: 10px 12px;
+  border: 1px solid var(--filete);
+  border-radius: 0;
+  background: var(--burbuja-in);
+  font-family: var(--interfaz);
+  font-size: 1rem;
+}
+
+.ask__send {
+  min-height: 46px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 0;
+  background: var(--tinta);
+  color: var(--papel);
+  font-family: var(--condensada);
+  font-size: .92rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.sugeridas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.sugerida {
+  padding: 9px 13px;
+  border: 1px solid var(--filete);
+  border-radius: 0;
+  background: var(--burbuja-in);
+  color: var(--tinta);
+  font-family: var(--interfaz);
+  font-size: .88rem;
+  text-decoration: none;
+}
+
+.sugerida:hover { background: var(--ocre); border-color: var(--ocre); color: var(--papel); }
+
+/* -------------------------------------------------------------- botones */
+
+.btn {
+  display: inline-block;
+  min-height: 44px;
+  padding: 11px 16px;
+  border-radius: 0;
+  font-family: var(--interfaz);
+  font-size: .92rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.btn--primary {
+  background: var(--tinta);
+  color: var(--papel);
+  border-color: var(--tinta);
+}
+
+.btn--primary:hover { background: var(--ocre-hondo); }
+
+.btn--ghost {
+  background: transparent;
+  color: var(--ocre);
+  border-color: var(--ocre);
+}
+
+.btn--ghost:hover { background: var(--ocre-claro); }
+
+.btn--follow {
+  background: transparent;
+  color: var(--tinta);
+  border-color: var(--tinta);
+}
+
+.btn--follow[aria-pressed="true"] {
+  background: transparent;
+  border-color: var(--tinta);
+}
+
+.viva-head .btn--ghost { color: var(--papel); border-color: var(--papel); }
+.viva-head .btn--ghost:hover { background: rgba(247, 244, 238, .15); }
+
+.error {
+  padding: 14px 16px;
+  background: var(--rojo-papel);
+  border-left: 4px solid var(--rojo);
+  color: var(--rojo-hondo);
+}
+
+/* --------------------------------------------------------- dos columnas */
+
+@media (min-width: 720px) {
+  .saber { grid-template-columns: 1fr 1fr; }
+  .bloque__titulo { font-size: 1.5rem; }
+}
+
+/* ------------------------------------------------ velocidad de lectura */
+
+.velocidad {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.velocidad__label {
+  font-family: var(--interfaz);
+  font-size: .8rem;
+  color: var(--tinta-suave);
+}
+
+.velocidad__opciones {
+  display: flex;
+  gap: 6px;
+}
+
+.velocidad__btn {
+  min-height: 40px;
+  padding: 8px 12px;
+  border: 1px solid var(--filete);
+  border-radius: 0;
+  background: var(--burbuja-in);
+  font-family: var(--interfaz);
+  font-size: .86rem;
+  color: var(--tinta-suave);
+  cursor: pointer;
+}
+
+.velocidad__btn.is-active {
+  background: var(--tinta);
+  border-color: var(--tinta);
+  color: var(--papel);
+}
+
+/* La barra de secciones acompaña el ancho de lectura de las páginas */
+.page .secciones {
+  max-width: 640px;
+}
+
+/* Barra de escucha dentro de una nota o de un tramo */
+.escuchar {
+  margin: 12px 0 4px;
+}
+
+.tramo .escuchar {
+  margin: 10px 0 0;
+  border-left-width: 3px;
+}
+
+/* Aviso al seguir una historia: explica dónde queda */
+.seguir-aviso {
+  flex-basis: 100%;
+  margin: 4px 0 0;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: .82rem;
+  color: var(--ocre);
+}
+
+/* ==================================================== portada del diario */
+
+/* Franja de temas: la personalización se ve antes que las noticias */
+.temas {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 10px 16px 12px;
+  background: var(--papel-viejo);
+  border-bottom: 1px solid var(--linea);
+}
+
+.temas__rotulo {
+  margin: 0 0 7px;
+  font-family: var(--interfaz);
+  font-size: .78rem;
+  color: var(--tinta-suave);
+}
+
+.temas__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip-tema {
+  min-height: 36px;
+  padding: 6px 11px;
+  border: 1px solid var(--filete);
+  border-radius: 0;
+  background: transparent;
+  color: var(--tinta-suave);
+  font-family: var(--interfaz);
+  font-size: .86rem;
+  cursor: pointer;
+}
+
+.chip-tema.is-activo {
+  background: var(--tinta);
+  border-color: var(--tinta);
+  color: var(--papel);
+}
+
+/* Los temas que todavía no existen se ven, pero no se pueden tocar */
+.chip-tema--pronto {
+  display: inline-flex;
+  align-items: center;
+  border-style: dashed;
+  opacity: .55;
+  cursor: default;
+}
+
+.temas__aviso {
+  margin: 8px 0 0;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: .82rem;
+  color: var(--ocre);
+}
+
+/* ------------------------------------------------------ notas de portada */
+
+.portada-nota {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--linea);
+}
+
+.portada-nota__titulo {
+  margin: 0 0 6px;
+  font-family: var(--display);
+  font-size: 1.25rem;
+  line-height: 1.14;
+}
+
+.portada-nota--principal .portada-nota__titulo { font-size: 1.75rem; }
+
+.portada-nota__titulo a {
+  color: var(--tinta);
+  text-decoration: none;
+}
+
+.portada-nota__titulo a:hover { color: var(--ocre); }
+
+.portada-nota__entrada {
+  margin: 10px 0 0;
+  font-family: var(--display);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+/* La capitular es solo de la nota principal: si va en todas, pierde fuerza */
+.portada-nota--principal .portada-nota__entrada::first-letter {
+  float: left;
+  margin: 4px 7px 0 0;
+  font-size: 3rem;
+  line-height: .8;
+  color: var(--ocre);
+}
+
+.vacio {
+  padding: 22px 0;
+  font-family: var(--display);
+  font-style: italic;
+  color: var(--tinta-suave);
+}
+
+/* ---------------------------------------------------------- el canal --- */
+
+.canal {
+  background: var(--tinta);
+  color: var(--papel);
+  padding: 14px 16px;
+}
+
+.canal > * {
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.canal__frase {
+  margin: 0 0 10px;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+.canal__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.canal .btn--primary {
+  background: var(--ocre);
+  border-color: var(--ocre);
+  color: var(--papel);
+}
+
+.canal .btn--ghost {
+  color: var(--papel);
+  border-color: var(--papel);
+}
+
+.canal .btn--ghost:hover { background: rgba(247, 244, 238, .15); }
+
+.boletin-audio { width: 100%; margin-top: 4px; }
+
+/* Todo / Mi edición: dos vistas del mismo diario */
+.vistas {
+  display: flex;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 16px;
+  gap: 0;
+  border-bottom: 1px solid var(--linea);
+}
+
+.vista {
+  padding: 9px 14px;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  background: transparent;
+  color: var(--tinta-suave);
+  font-family: var(--interfaz);
+  font-size: .95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.vista.is-activa {
+  color: var(--tinta);
+  border-bottom-color: var(--ocre);
+}
+
+/* Con varios hilos la barra no entra: se desliza */
+.secciones {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.secciones::-webkit-scrollbar { display: none; }
+.secciones a { flex: 0 0 auto; white-space: nowrap; }
+
+/* Un tema sin hilo cargado todavía no lleva a ningún lado */
+.tag--vacio { opacity: .55; }
+
+a.tag { text-decoration: none; }
+a.tag:hover { background: var(--tinta); }
+
+/* La acción del canal se separa de las secciones y se marca en ocre */
+.secciones__accion {
+  margin-left: auto;
+  padding-left: 14px;
+  border-left: 1px solid var(--linea);
+  color: var(--ocre) !important;
+}
+
+.secciones__accion:hover {
+  border-bottom-color: var(--ocre);
+}
+
+/* En pantallas angostas la barra se desliza y el margen automático no aplica */
+@media (max-width: 560px) {
+  .secciones__accion { margin-left: 0; }
+}
+
+/* ============================================================== fotos */
+
+.foto {
+  margin: 0 0 12px;
+}
+
+.foto img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.foto__credito {
+  margin-top: 4px;
+  font-family: var(--interfaz);
+  font-size: .72rem;
+  color: var(--tinta-suave);
+}
+
+/* Espacio reservado: dice qué foto va, en vez de dejar un hueco */
+.foto__hueco {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px;
+  background: var(--papel-viejo);
+  border: 1px dashed var(--filete);
+  color: var(--tinta-suave);
+}
+
+.foto--principal .foto__hueco { min-height: 150px; }
+
+.foto__icono {
+  font-size: 1.4rem;
+  color: var(--ocre);
+  line-height: 1;
+}
+
+.foto__nota {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: .78rem;
+  line-height: 1.45;
+  opacity: .85;
+}
+
+/* En las secundarias la foto va al costado, chica */
+.portada-nota__fila {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.portada-nota__texto { flex: 1; min-width: 0; }
+
+.foto--secundaria {
+  flex: 0 0 96px;
+  width: 96px;
+  margin: 0;
+}
+
+.foto--secundaria .foto__hueco {
+  min-height: 84px;
+  padding: 8px;
+  align-items: center;
+  text-align: center;
+}
+
+.foto--secundaria .foto__nota { display: none; }
+.foto--secundaria .foto__icono { font-size: 1.2rem; }
+
+@media (min-width: 640px) {
+  .foto--secundaria { flex-basis: 140px; width: 140px; }
+  .foto--secundaria .foto__hueco { min-height: 105px; }
+}
+
+/* ------------------------------------------- jerarquía de la portada */
+
+.portada-nota--principal .portada-nota__titulo {
+  font-size: clamp(1.7rem, 7vw, 2.1rem);
+  line-height: 1.08;
+}
+
+.portada-nota:not(.portada-nota--principal) .portada-nota__titulo {
+  font-size: 1.08rem;
+  line-height: 1.2;
+}
+
+.portada-nota:not(.portada-nota--principal) .nota__bajada {
+  font-size: .88rem;
+}
+
+.portada-nota--principal { padding-bottom: 24px; }
+
+/* Un crédito sin completar se marca: publicar una foto sin autoría es un error */
+.foto__credito--falta {
+  color: var(--rojo);
+  font-style: italic;
+}
+
+/* En la miniatura no entra el crédito: va solo en la foto grande */
+.foto--secundaria .foto__credito { display: none; }
+
+/* Por qué esta nota está en tu portada */
+.porque {
+  margin: 10px 0 0;
+  padding-left: 10px;
+  border-left: 2px solid var(--ocre);
+  font-family: var(--display);
+  font-style: italic;
+  font-size: .82rem;
+  color: var(--tinta-suave);
+}
+
+/* El recuento: cuántas de todas las publicadas son tuyas */
+.recuento {
+  margin: 0 0 4px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--linea);
+  font-family: var(--display);
+  font-size: .95rem;
+  color: var(--tinta-suave);
+}
+
+.recuento strong {
+  font-family: var(--condensada);
+  font-size: 1.25em;
+  color: var(--ocre);
+}
+
+/* ======================================== lectores de ejemplo (demo) */
+
+.personas {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 10px 16px 12px;
+  background: var(--tinta);
+  color: var(--papel);
+}
+
+.personas__rotulo {
+  margin: 0 0 7px;
+  font-family: var(--interfaz);
+  font-size: .76rem;
+  color: var(--tinta-clara);
+}
+
+.personas__lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.persona {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 7px 12px;
+  border: 1px solid rgba(247, 244, 238, .35);
+  border-radius: 0;
+  background: transparent;
+  color: var(--papel);
+  cursor: pointer;
+  text-align: left;
+}
+
+.persona:hover { border-color: var(--papel); }
+
+.persona.is-activa {
+  background: var(--ocre);
+  border-color: var(--ocre);
+}
+
+.persona__nombre {
+  font-family: var(--interfaz);
+  font-size: .92rem;
+  font-weight: 600;
+}
+
+.persona__rol {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: .74rem;
+  opacity: .8;
+}
+
+.personas__nota {
+  margin: 9px 0 0;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: .84rem;
+  color: var(--tinta-clara);
+}
+
+/* ================================================ novedades desde la visita */
+
+.novedades {
+  margin: 0 -16px 18px;
+  padding: 14px 16px 16px;
+  background: var(--senal);
+  color: var(--senal-papel);
+}
+
+.novedades__rotulo {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0 0 7px;
+  font-family: var(--condensada);
+  font-size: .76rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--senal-suave);
+}
+
+/* El punto vivo es lo único que se mueve en toda la portada */
+.novedades__punto {
+  width: 8px; height: 8px;
+  flex: 0 0 8px;
+  border-radius: 50%;
+  background: var(--senal-vivo);
+  animation: latir 2.4s ease-in-out infinite;
+}
+
+@keyframes latir {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: .35; }
+}
+
+.novedades__titulo {
+  margin: 0 0 11px;
+  font-family: var(--display);
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+.novedades__titulo strong {
+  font-weight: 400;
+  color: var(--senal-vivo);
+}
+
+.novedades__texto {
+  margin: 0;
+  font-family: var(--display);
+  font-size: .95rem;
+  line-height: 1.55;
+  opacity: .92;
+}
+
+.novedades__lista {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.novedades__lista li {
+  border-top: 1px solid rgba(234, 246, 248, .22);
+}
+
+.novedades__lista a {
+  display: block;
+  padding: 9px 0;
+  color: var(--senal-papel);
+  text-decoration: none;
+}
+
+.novedades__lista a:hover .novedades__hilo { color: var(--senal-vivo); }
+
+.novedades__hilo {
+  display: block;
+  font-family: var(--interfaz);
+  font-size: .95rem;
+  font-weight: 600;
+}
+
+.novedades__hilo::after {
+  content: " ›";
+  color: var(--senal-vivo);
+}
+
+.novedades__detalle {
+  display: block;
+  margin-top: 1px;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: .85rem;
+  opacity: .8;
+}
+
+/* Primera visita: se explica la función en vez de inventar novedades */
+.novedades--primera .novedades__titulo { margin-bottom: 7px; }
+
+.novedades__simular {
+  margin-top: 12px;
+  padding: 8px 13px;
+  border: 1px solid var(--senal-vivo);
+  border-radius: 0;
+  background: transparent;
+  color: var(--senal-vivo);
+  font-family: var(--interfaz);
+  font-size: .84rem;
+  cursor: pointer;
+}
+
+.novedades__simular:hover { background: rgba(55, 208, 232, .12); }
+
+.novedades--quieta { padding-bottom: 14px; }
+
+/* ------------------------------------------------- notas que cambiaron */
+
+.sello-nuevo {
+  display: inline-block;
+  margin-right: 7px;
+  padding: 2px 7px;
+  background: var(--senal);
+  color: var(--senal-papel);
+  font-family: var(--interfaz);
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  vertical-align: 1px;
+}
+
+.portada-nota.es-novedad {
+  border-left: 3px solid var(--senal);
+  padding-left: 12px;
+  margin-left: -15px;
+}
+
+/* ==================================================== recorrido guiado */
+
+.btn-recorrido {
+  margin-top: 11px;
+  padding: 8px 13px;
+  border: 1px solid var(--senal-vivo);
+  border-radius: 0;
+  background: transparent;
+  color: var(--senal-vivo);
+  font-family: var(--interfaz);
+  font-size: .86rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-recorrido:hover { background: rgba(55, 208, 232, .12); }
+
+body.recorrido-activo { overflow: hidden; }
+
+.recorrido__fondo {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 12, 14, .78);
+  z-index: 1000;
+}
+
+/* El elemento señalado queda por encima del velo, con su propio fondo */
+.recorrido-foco {
+  position: relative;
+  z-index: 1001;
+  box-shadow: 0 0 0 3px var(--senal-vivo), 0 0 0 12px rgba(55, 208, 232, .18);
+}
+
+/* La franja de temas y la barra de lectores son transparentes por dentro */
+.recorrido-foco.personas,
+.recorrido-foco.novedades { background-clip: padding-box; }
+
+.recorrido__panel {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1002;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 18px 18px 20px;
+  background: var(--papel);
+  border-top: 4px solid var(--senal);
+}
+
+/* Los pasos de apertura y cierre no señalan nada: van centrados */
+.recorrido--centrado .recorrido__panel {
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%);
+  border-top-width: 6px;
+}
+
+.recorrido__volanta {
+  margin: 0 0 6px;
+  font-family: var(--condensada);
+  font-size: .76rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--senal);
+}
+
+.recorrido__titulo {
+  margin: 0 0 8px;
+  font-family: var(--display);
+  font-size: 1.4rem;
+  line-height: 1.15;
+}
+
+.recorrido--centrado .recorrido__titulo { font-size: 1.75rem; }
+
+.recorrido__texto {
+  margin: 0 0 16px;
+  font-family: var(--display);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--tinta-suave);
+}
+
+.recorrido__acciones {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.recorrido__seguir {
+  min-height: 46px;
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 0;
+  background: var(--senal);
+  color: var(--senal-papel);
+  font-family: var(--interfaz);
+  font-size: .95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.recorrido__seguir:hover { background: var(--senal-honda); }
+
+.recorrido__salir {
+  min-height: 46px;
+  padding: 12px 8px;
+  border: 0;
+  background: transparent;
+  color: var(--tinta-suave);
+  font-family: var(--interfaz);
+  font-size: .88rem;
+  cursor: pointer;
+}
+
+.recorrido__salir:hover { color: var(--tinta); }
+
+@media (prefers-reduced-motion: reduce) {
+  .novedades__punto { animation: none; }
+}
+
+/* Durante el recorrido, el botón para iniciarlo sobra */
+body.recorrido-activo .btn-recorrido { display: none; }
+
+/* ============================================ credenciales de la historia */
+
+.credenciales {
+  margin: 14px 0 0;
+  padding: 12px 14px;
+  background: var(--burbuja-in);
+  border: 1px solid var(--linea);
+  border-top: 3px solid var(--tinta);
+}
+
+.credenciales__rotulo {
+  margin: 0 0 8px;
+  font-family: var(--condensada);
+  font-size: .76rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+}
+
+.credenciales__lista {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.credenciales__lista li {
+  font-family: var(--interfaz);
+  font-size: .8rem;
+  line-height: 1.3;
+  color: var(--tinta-suave);
+}
+
+.credenciales__lista strong {
+  display: block;
+  font-family: var(--display);
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: var(--tinta);
+}
+
+.credenciales__nota {
+  margin: 10px 0 0;
+  padding-top: 9px;
+  border-top: 1px solid var(--linea);
+  font-family: var(--display);
+  font-style: italic;
+  font-size: .82rem;
+  line-height: 1.45;
+  color: var(--tinta-suave);
+}
+
+/* =============================================== dónde conversar */
+
+.canal-elector__fondo {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 12, 14, .72);
+  z-index: 1100;
+}
+
+.canal-elector__panel {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 1101;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 18px;
+  background: var(--papel);
+  border-top: 4px solid var(--tinta);
+}
+
+.canal-elector__volanta {
+  margin: 0 0 4px;
+  font-family: var(--condensada);
+  font-size: .76rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ocre);
+}
+
+.canal-elector__titulo {
+  margin: 0 0 14px;
+  font-family: var(--display);
+  font-size: 1.35rem;
+}
+
+.canal-elector__opcion {
+  display: block;
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  border: 1px solid var(--filete);
+  color: var(--tinta);
+  text-decoration: none;
+}
+
+.canal-elector__opcion--fuerte {
+  background: var(--tinta);
+  border-color: var(--tinta);
+  color: var(--papel);
+}
+
+.canal-elector__opcion:hover { border-color: var(--ocre); }
+
+.canal-elector__nombre {
+  display: block;
+  font-family: var(--interfaz);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.canal-elector__detalle {
+  display: block;
+  margin-top: 1px;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: .84rem;
+  opacity: .8;
+}
+
+.canal-elector__pronto {
+  margin: 12px 0 0;
+  padding-top: 11px;
+  border-top: 1px solid var(--linea);
+  font-family: var(--display);
+  font-size: .84rem;
+  line-height: 1.5;
+  color: var(--tinta-suave);
+}
+
+.canal-elector__cerrar {
+  margin-top: 12px;
+  padding: 10px 0;
+  border: 0;
+  background: transparent;
+  color: var(--tinta-suave);
+  font-family: var(--interfaz);
+  font-size: .88rem;
+  cursor: pointer;
+}
+
+.canal__nota {
+  margin: -6px 0 10px;
+  font-family: var(--interfaz);
+  font-size: .82rem;
+  opacity: .75;
+}
+
+/* La barra de secciones se desliza; la acción del canal no */
+.secciones {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  overflow: visible;
+}
+
+.secciones__lista {
+  display: flex;
+  gap: 18px;
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+
+  /*
+   * La lista se desliza, pero sin scrollbar el corte se leía como un error:
+   * "Vaca Muer" parecía texto roto y no una sección que sigue más allá del
+   * borde. El degradado de los últimos píxeles lo convierte en lo que es.
+   * Si la lista entra entera no hay nada ahí para desvanecer.
+   */
+  -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 26px), transparent);
+          mask-image: linear-gradient(to right, #000 calc(100% - 26px), transparent);
+}
+
+.secciones__lista::-webkit-scrollbar { display: none; }
+
+.secciones__accion {
+  flex: 0 0 auto;
+  margin-left: 12px;
+  padding-left: 12px;
+  border-left: 1px solid var(--linea);
+  white-space: nowrap;
+}
+
+/* Quién sigue el tema */
+.firma {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px;
+  margin: 10px 0 0;
+  padding-top: 9px;
+  border-top: 1px solid var(--linea);
+}
+
+.firma__rol {
+  font-family: var(--condensada);
+  font-size: .72rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+}
+
+.firma__nombre {
+  font-family: var(--display);
+  font-size: .95rem;
+  color: var(--tinta);
+}
+
+/* ================================================== programá tu boletín */
+
+.programar {
+  margin: 0 -16px;
+  padding: 18px 16px 20px;
+  background: var(--papel-viejo);
+  border-top: 1px solid var(--linea);
+  border-bottom: 1px solid var(--linea);
+}
+
+.programar__rotulo {
+  margin: 0 0 4px;
+  font-family: var(--condensada);
+  font-size: 1rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.programar__bajada {
+  margin: 0 0 12px;
+  font-family: var(--display);
+  font-size: .92rem;
+  line-height: 1.5;
+  color: var(--tinta-suave);
+}
+
+.programar__horarios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.horario {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 9px 13px;
+  border: 1px solid var(--filete);
+  border-radius: 0;
+  background: var(--burbuja-in);
+  color: var(--tinta);
+  cursor: pointer;
+  text-align: left;
+}
+
+.horario.is-activo {
+  background: var(--tinta);
+  border-color: var(--tinta);
+  color: var(--papel);
+}
+
+.horario__hora {
+  font-family: var(--display);
+  font-size: 1.15rem;
+}
+
+.horario__nota {
+  font-family: var(--interfaz);
+  font-size: .74rem;
+  opacity: .75;
+}
+
+.programar__canales {
+  margin: 13px 0 0;
+  font-family: var(--display);
+  font-size: .92rem;
+  color: var(--tinta);
+}
+
+.programar__aviso {
+  margin: 8px 0 0;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: .82rem;
+  line-height: 1.45;
+  color: var(--tinta-suave);
+}
+
+/* =========================================== Edición Río Negro */
+
+/* Las cuatro marcas, debajo de la chapa. Secundarias a propósito: son el
+   origen del contenido, no la navegación. */
+.masthead__marcas {
+  margin: 6px 0 0;
+  padding-top: 6px;
+  border-top: 1px solid rgba(247, 244, 238, .22);
+  font-family: var(--interfaz);
+  font-size: .74rem;
+  letter-spacing: .04em;
+  color: var(--tinta-clara);
+}
+
+.masthead__marcas span { color: var(--marca); }
+
+/* ---------------------------------------------- procedencia editorial */
+
+.origen {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 8px;
+  margin: 9px 0 0;
+  padding: 6px 0 0;
+  border-top: 1px solid var(--linea);
+}
+
+.origen__rot {
+  font-family: var(--condensada);
+  font-size: .72rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+}
+
+.origen__marca {
+  font-family: var(--interfaz);
+  font-size: .84rem;
+  font-weight: 600;
+  color: var(--marca);
+}
+
+.origen__sep { color: var(--tinta-suave); margin: 0 5px; }
+
+.origen--varias { flex-direction: column; gap: 3px; }
+.origen__lista { display: flex; flex-wrap: wrap; align-items: baseline; }
+
+
+/* Quién pone la voz. Va debajo de cada reproductor, no en un bloque aparte */
+.voz-aviso {
+  margin: 5px 0 0;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: .78rem;
+  line-height: 1.4;
+  color: var(--tinta-suave);
+}
+
+.escuchar { margin: 12px 0 4px; }
+.escuchar .clip { margin: 0; }
+.tramo .escuchar { margin: 10px 0 0; }
+
+/* ========================== acentos propios de la Edición Río Negro === */
+
+/* Filete de marca al tope de la página: la firma del ecosistema */
+:root[data-tema="grupo"] body::before {
+  content: "";
+  display: block;
+  height: 4px;
+  background: var(--marca);
+}
+
+:root[data-tema="grupo"] .masthead {
+  border-bottom: 1px solid rgba(224, 31, 40, .35);
+}
+
+/* Las marcas, con más presencia pero sin volverse navegación */
+:root[data-tema="grupo"] .masthead__marcas {
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--papel);
+}
+
+:root[data-tema="grupo"] #edicion-label {
+  color: var(--marca);
+  font-weight: 600;
+}
+
+/* El filete de la fecha toma el rojo del diario */
+:root[data-tema="grupo"] .dateline {
+  border-bottom-color: var(--marca);
+}
+
+/* La caja de credenciales se identifica con el ecosistema */
+:root[data-tema="grupo"] .credenciales {
+  border-top-color: var(--marca);
+}
+
+:root[data-tema="grupo"] .credenciales__rotulo { color: var(--marca); }
+
+/* La volanta de categoría toma el rojo del diario. Es lo que hace que cada
+   ficha de la portada se lea como una nota del Río Negro sin tocar el cuerpo
+   del texto, que sigue siendo el de Tu Canillita.
+
+   Va solo acá, sobre papel, donde el rojo da 4,64:1. La volanta de las
+   páginas de hilo vive sobre el negro de la cabecera: ahí el mismo rojo cae
+   a 3,54:1 y en un cuerpo de .72rem espaciado no se lee, así que conserva el
+   ocre claro. */
+:root[data-tema="grupo"] .nota__eyebrow { color: var(--marca); }
+
+/* La barra del canal invita con el rojo del diario */
+:root[data-tema="grupo"] .canal .btn--primary,
+:root[data-tema="grupo"] .probar .btn--primary {
+  background: var(--marca);
+  border-color: var(--marca);
+}
+
+/* Los tramos y las historias seguidas usan el azul de apoyo */
+:root[data-tema="grupo"] .btn--follow {
+  border-color: var(--senal);
+  color: var(--senal);
+}
+
+:root[data-tema="grupo"] .secciones__accion {
+  color: var(--marca) !important;
+}
+
+:root[data-tema="grupo"] .secciones a:hover {
+  border-bottom-color: var(--marca);
+  color: var(--marca);
+}
+
+:root[data-tema="grupo"] .vista.is-activa {
+  border-bottom-color: var(--marca);
+}
+
+/* El aviso de voz, en la Edición Río Negro, se apoya en el rojo */
+:root[data-tema="grupo"] .voz-aviso {
+  padding-left: 9px;
+  border-left: 2px solid var(--marca);
+}
+

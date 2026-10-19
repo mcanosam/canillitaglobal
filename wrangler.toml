@@ -1,0 +1,20 @@
+# Configuración del Worker que corre el bot de Telegram.
+#
+# OJO con el nombre: es el identificador del Worker en Cloudflare. Esta edición
+# usa 'canillita-bot-global' justamente para no pisar al bot de la otra demo,
+# que se llama 'canillita-bot'. Dos repos con el mismo nombre acá despliegan
+# encima del mismo Worker y el último que corre se queda con el bot.
+#
+# El despliegue lo hace GitHub Actions: no hace falta instalar nada localmente.
+# Los secretos (TELEGRAM_TOKEN, WEBHOOK_SECRET) no van acá, se cargan aparte.
+
+name = "canillita-bot-global"
+main = "bot/worker.js"
+compatibility_date = "2026-08-01"
+
+[vars]
+SITIO = "https://mcanosam.github.io/canillitaglobal"
+
+[observability]
+enabled = true
+

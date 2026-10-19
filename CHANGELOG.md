@@ -1,0 +1,771 @@
+# Historial de versiones
+
+Formato de fecha: día-mes-año. La versión que corre está en `js/version.js` y
+se muestra al pie de cada pantalla.
+
+Criterio de numeración:
+
+- **tercer número** — correcciones y ajustes menores
+- **segundo número** — funcionalidad nueva o cambios visibles
+- **primer número** — cambio de fondo en el producto
+
+---
+## v1.6.1 · 07-08-2026
+
+- Corrección: si `js/version.js` no está presente, la aplicación seguía sin
+  arrancar. La versión es informativa y ahora no puede tumbar la carga.
+
+---
+## v1.7.0 · 07-08-2026
+
+- Los clips de audio salen del chat: ahora hay una barra de escucha en cada
+  noticia de la edición y en cada tramo de la historia viva. Reutilizan los
+  clips que ya se generaban; no hay audio nuevo que producir.
+- El turno de reproducción se comparte entre el boletín y los clips: arrancar
+  uno detiene el otro y devuelve su botón al estado inicial.
+
+---
+## v1.8.0 · 07-08-2026
+
+- Bot de Telegram: `bot/worker.js` corre en Cloudflare Workers y responde con
+  el mismo motor que usa la web. `bot/telegram.js` traduce la respuesta del
+  motor al formato del canal; la lógica no se toca.
+- El boletín y las respuestas grabadas llegan como notas de voz. Para eso,
+  `tts-respuestas.sh` genera además de MP3 un OGG/Opus por clip.
+- Despliegue automático con `.github/workflows/bot.yml`: no hace falta instalar
+  nada en la máquina.
+- Se descartó WhatsApp para esta etapa: el envío por iniciativa propia exige
+  plantillas pagas, cuenta de empresa verificada y un número dedicado.
+
+---
+## v1.8.1 · 07-08-2026
+
+- Bot: los botones viajan pegados a la nota de voz en vez de ir en un mensaje
+  aparte. El audio queda al final del hilo, que es donde el lector lo busca.
+- Bot: el aviso de "escribiendo" no se muestra antes del boletín. Telegram ya
+  indica que se está enviando una nota de voz, y el aviso doble solo demoraba
+  la llegada.
+
+---
+## v1.8.1 · 07-08-2026
+
+- Bot: los botones viajan pegados a la nota de voz en vez de ir en un mensaje
+  aparte. El audio queda al final del hilo, que es donde el lector lo busca.
+- Bot: el aviso de "escribiendo" no se muestra antes del boletín. Telegram ya
+  indica que se está enviando una nota de voz, y el aviso doble solo demoraba
+  la llegada.
+
+---
+## v1.9.0 · 10-08-2026
+
+- **Pedidos compuestos.** `detectAll()` reconoce varias intenciones en una
+  misma frase cuando están unidas por un conector, y `respondToAll()` las
+  responde en orden. "El resumen por audio y abrime la edición" son dos cosas.
+  Sin conector se sigue respondiendo una sola, para no partir en dos una
+  pregunta común.
+- **El lector puede hablarle al bot.** Las notas de voz se transcriben con
+  Whisper de Workers AI, dentro de la asignación gratuita. El bot muestra lo
+  que entendió antes de responder, así una transcripción errada se ve.
+- Los tramos de la ruta entran en la detección múltiple: "la sección 3 y qué
+  pasa en Cipolletti" devuelve las dos fichas.
+
+---
+## v1.9.0 · 12-08-2026
+
+- Nueva historia viva en Deportes: **el hilo de Messi**, de Rosario a la final
+  del Mundial 2026. Cronología de trece hitos, hechos confirmados y preguntas
+  abiertas (si sigue en la Selección, si Scaloni continúa).
+- Contenido real y verificado con fuentes: La Nación, Telemundo, Prensa Libre,
+  Sports Illustrated y Olympics.com. La noticia deportiva ficticia se mantiene
+  aparte, marcada como tal.
+- Cuatro intenciones nuevas en el chat: el hilo, la final, el retiro y los
+  Balones de Oro. Tres tienen clip de audio.
+
+---
+## v1.10.0 · 12-08-2026
+
+- El hilo de Messi sube al tercer lugar de la edición, antes de la nota
+  ficticia: el contenido real va primero.
+- Menú ampliado a seis opciones, con "El hilo de Messi" como entrada propia.
+  Antes solo se llegaba escribiendo la pregunta.
+- **Seguir una historia ahora sirve para algo.** Las historias seguidas
+  aparecen encabezando el menú del chat y como primer botón. Al tocar el botón
+  de seguir, la edición avisa dónde queda.
+- `mockups/portadas.html`: las dos maquetas de portada como página navegable,
+  para verlas en el teléfono en vez de como imagen.
+
+---
+## v1.11.0 · 12-08-2026
+
+- **El diario pasa a llamarse "Tu Canillita".** Se saca "digital", que en 2026
+  no dice nada y estorbaba en el boletín hablado. El repositorio y la URL
+  quedan como están: la dirección técnica no tiene por qué coincidir.
+- **Portada nueva (opción A).** `index.html` deja de ser el simulador de chat y
+  pasa a ser la portada del diario: franja de temas arriba, nota principal con
+  capitular, secundarias abajo y el boletín del día.
+- Los temas se eligen tocando: la portada se rearma en el acto y la elección
+  queda guardada. Los temas sin contenido se muestran apagados como "pronto",
+  para no prometer secciones vacías.
+- El simulador de chat se muda a `pages/chat.html`. La conversación de verdad
+  vive en Telegram, y la portada la ofrece con "Conversá con el diario".
+- `js/portada.js` y `js/router.js` con `homeUrl()`.
+
+---
+## v1.12.0 · 12-08-2026
+
+- **Aparece el concepto de HILO**, distinto del de historia: la Ruta 22 son dos
+  historias y un solo hilo. Seguir, navegar y personalizar pasan a hacerse por
+  hilo. La tabla está en `js/content.js`.
+- **`pages/hilo.html` + `js/hilo.js`**: página de historia viva genérica. Messi
+  ya tiene la suya, y cualquier hilo nuevo la tiene con solo agregarlo a la
+  tabla. La Ruta 22 conserva página propia porque funde dos historias.
+- **Portada con dos vistas**: "Todo" muestra lo publicado; "Mi edición" filtra
+  por los temas elegidos y es la que trae la franja de chips.
+- **Barra de secciones dinámica**: se arma con los hilos cargados y se desliza
+  cuando no entran. "Chat" pasa a llamarse "Conversá con el diario".
+- **Un solo botón de seguir por hilo.** Antes la Ruta 22 ofrecía dos.
+- Se saca el desplegable "Profundizar en esta historia": duplicaba el camino a
+  la nota completa. Queda "Leer la historia completa", que abre la página del
+  hilo.
+- En la edición, los temas de "Tus temas" ahora llevan a su hilo.
+- "Volver al chat" pasa a "Volver al inicio" en todas las páginas.
+- El bot suma "Contame el hilo de Messi" a las opciones de arranque.
+
+---
+## v1.12.1 · 12-08-2026
+
+- "Conversá con el diario" se separa del resto de la barra de secciones: no es
+  una sección más, es la acción que distingue al producto. Va al final, con
+  filete separador y en ocre.
+- El chat suma la barra del canal con "Abrir en Telegram", igual que la
+  portada: el simulador aclara que es una demostración y ofrece el canal real.
+
+---
+## v1.13.0 · 12-08-2026
+
+**Fotos**
+
+- Cada historia declara su foto en el JSON (`image`). Mientras el archivo no
+  exista, se dibuja un espacio reservado que dice **qué foto hay que sacar**:
+  más útil que un hueco y más honesto que una imagen de relleno.
+- La nota principal lleva foto grande; las secundarias, miniatura al costado.
+- La ficha de Messi aclara que requiere foto con licencia: no se usan imágenes
+  de prensa sin autorización.
+
+**Tipografía y color**
+
+- Se saca la mayúscula de casi toda la interfaz: navegación, chips, botones,
+  fechas, metadatos y velocidad pasan a caja baja. Queda solo donde comunica
+  jerarquía: la chapa, las volantas y los títulos de bloque.
+- La volanta deja de ser un recuadro ocre relleno y pasa a texto ocre. El ocre
+  estaba en tantos lugares que había dejado de funcionar como acento.
+- Los chips activos, el botón de seguir y las etiquetas de tema pasan a tinta.
+- Jerarquía real en la portada: la principal casi duplica el cuerpo del título
+  y las secundarias se achican de verdad.
+
+---
+## v1.14.0 · 12-08-2026
+
+- Primeras fotos reales en las dos historias de la Ruta 22: los pozos con agua
+  y la fila de vehículos sobre el tramo de calzada simple.
+- Ilustración propia para el hilo de Messi
+  (`assets/images/messi-tres-finales.svg`): las tres finales del mundo, con la
+  de 2022 marcada como la única ganada. Se dibuja en vez de usar una foto de
+  agencia, que requeriría licencia.
+- Cuando una foto no tiene crédito cargado, el pie lo marca en rojo. Publicar
+  una imagen sin autoría es un error, y el diseño ahora lo hace visible.
+- "Abrir en Telegram" pasa a la barra superior del simulador, donde se ve sin
+  tener que bajar hasta el pie.
+
+---
+## v1.14.1 · 14-08-2026
+
+- Se agrega `.gitattributes` con `text=auto eol=lf`. Sin esto, los archivos
+  guardados en Windows y los que genera el workflow en Linux se veían como si
+  hubiera cambiado cada línea, y al unir las historias Git marcaba conflictos
+  en todo el proyecto aunque el contenido fuera idéntico.
+
+---
+## v1.15.0 · 14-08-2026
+
+**Contenido: de 4 a 7 historias**
+
+- **La obra de agua más grande de Río Negro se hará en Roca** (Municipio):
+  38.552 millones de pesos financiados por el CAF, cinco empresas en carrera.
+  Fuente: LCR, 11-08-2026.
+- **Menos fruta, mejores precios** (Fruticultura): la cosecha cayó 14%, los
+  precios subieron hasta 87% y producir un kilo cuesta USD 0,34. Fuentes:
+  LM Neuquén, Diario Río Negro, Diario Neuquino, Noti Río, Infocampo.
+- **Frío polar, viento y hielo** (Clima y rutas): alertas del SMN, ráfagas de
+  78 km/h en el valle y riesgo de hielo en las rutas 22, 23, 40 y 237.
+  Fuentes: Diario Río Negro, NoticiasNQN.
+- Los temas pasan a ser cinco: Ruta 22, Municipio, Fruticultura, Clima y
+  Deportes. Policiales y Cultura siguen como "pronto".
+
+**La personalización se vuelve visible**
+
+- "Mi edición" muestra 4 de 7 historias: por primera vez filtrar cambia algo.
+- Cada nota explica por qué está ahí: *"porque elegiste Ruta 22"* o *"porque
+  seguís Agua en Roca"*. Solo en "Mi edición"; en "Todo" no hay criterio que
+  explicar.
+- Recuento arriba de la portada: *"De las 7 historias publicadas, estas 4 son
+  las tuyas"*. El número sale del contenido cargado, así que no puede mentir.
+- `storyReply()` en `responses.js`: plantilla genérica para hilos nuevos. Sumar
+  un hilo ya no obliga a escribir una función por historia.
+
+---
+## v1.16.0 · 14-08-2026
+
+- **Lectores de ejemplo** (`js/personas.js`): Mauro, vecino de Roca; Jorge,
+  productor frutícola de Cervantes; y Diego, hincha de Cipolletti. Cambiar de
+  lector reescribe las preferencias reales, así que la portada, la edición, el
+  boletín y el chat cambian de verdad, no simulan cambiar.
+  - Mauro ve 5 de 7 historias, boletín de 1 minuto.
+  - Jorge ve 4: fruticultura, clima y Ruta 22. Boletín de 3 minutos, porque
+    escucha en la camioneta.
+  - Diego ve 2, las dos deportivas, con boletín de 30 segundos.
+- La barra aparece en las cinco pantallas, sobre fondo tinta y con el rótulo
+  "Ver la demo como", para que se lea como ayuda de demostración y no como una
+  función del diario.
+- Tocar los temas a mano desactiva la persona y pasa a "Yo".
+
+---
+## v1.17.0 · 14-08-2026
+
+**Qué cambió desde tu última visita**
+
+- Se agrega un **color señal** (`--senal`, petróleo) reservado a una sola cosa:
+  "esto cambió". El ocre venía haciendo cinco trabajos —volantas, capitulares,
+  chips, enlaces, audio— y por eso el diseño se leía monótono: cuando un color
+  significa todo, no significa nada.
+- Banda de novedades arriba de "Mi edición": cuántos hilos se movieron y cuáles,
+  con el tiempo transcurrido. Único elemento animado de la portada: un punto
+  que late.
+- Sello "Actualizada" y filete lateral en las notas que cambiaron.
+- `preferences.marcarVisita()` guarda la visita anterior. Recargar no borra las
+  novedades: se considera la misma visita si pasó menos de media hora.
+- **Primera visita:** no se inventan novedades. La banda explica la función y
+  ofrece simular una ausencia de una semana, diciendo que es una simulación.
+- Cambiar de lector de ejemplo reinicia su historial de visitas: cada persona
+  tiene la suya. Mauro ve moverse Agua en Roca y Messi; Jorge, Fruticultura y
+  Clima; Diego, solo Messi.
+- La banda no aparece en "Todo": ahí no hay criterio personal que aplicar.
+
+---
+## v1.18.0 · 14-08-2026
+
+- **Recorrido guiado** (`js/recorrido.js`): siete pasos que explican el
+  producto sobre la portada real, no sobre pantallas aparte. Bienvenida,
+  elegir lector, la selección, los hilos vivos, el boletín, la conversación y
+  el cierre.
+- Se activa con `?demo=1` en la dirección —para el enlace que se comparte— o
+  con el botón "Hacer el recorrido guiado", siempre disponible.
+- El paso se guarda: elegir un lector recarga la página y el recorrido sigue
+  donde estaba. Sin eso se cortaba en el segundo paso.
+- Los pasos cuyo objetivo no está visible se saltean solos. Es el caso del
+  boletín cuando todavía no se generó el audio.
+- Al terminar se limpia `?demo=1` de la dirección, así recargar no vuelve a
+  arrancar el recorrido.
+
+---
+## v1.19.0 · 14-08-2026
+
+- **Credenciales del hilo**: debajo de la nota principal y en cada historia
+  viva, cuatro números que hacen visible el trabajo periodístico —hitos
+  reconstruidos, hechos verificados, preguntas sin respuesta y fuentes
+  consultadas—. Salen del propio contenido: si bajan, se nota.
+- Paso nuevo en el recorrido, "Acá está el trabajo", que señala esas
+  credenciales. La numeración de los pasos pasa a calcularse sola.
+- El paso de la conversación deja de apuntar al enlace de la barra —que se
+  perdía al deslizarse— y apunta al bloque del canal, que es grande y fijo.
+- **Elector de canal**: al tocar "Conversá con el diario" se pregunta dónde
+  hablar, Telegram o el simulador, y se aclara que WhatsApp llega después y
+  por qué todavía no está.
+
+---
+## v1.20.0 · 14-08-2026
+
+- **"Conversá" vuelve a estar arriba, y ya no se pierde.** Las secciones se
+  deslizan dentro de su propia caja y la acción queda fija a la derecha. Antes
+  viajaba dentro del área deslizable y desaparecía con tres o cuatro hilos.
+- **Quién sigue el tema.** Cada historia muestra al periodista que cubre el
+  asunto: en la Ruta 22, Hugo Alonso. No es la firma del texto sino la
+  autoridad sobre un tema seguido durante años, que es lo que distingue a un
+  diario local.
+- **Programá tu boletín**: elegís las 7, la 1 o las 20 y queda guardado. Se
+  aclara en pantalla que el envío automático todavía no está conectado.
+  Prometer un boletín que no llega sería el peor error posible.
+- Paso nuevo en el recorrido, "Vos decidís cuándo".
+- El paso del audio aclara que también llega como nota de voz por Telegram, y
+  más adelante por WhatsApp.
+- Se saca "Alto Valle" de los textos del recorrido: la propuesta no se acota a
+  una región.
+
+---
+## v1.21.0 · 19-08-2026
+
+- **`pages/propuesta.html`**: la propuesta en una página, para acompañar el
+  enlace de la demo. Tres pilares —hilos que no se cierran, edición por lector,
+  el mismo contenido en tres formatos—, los números reales del contenido
+  cargado (43 hitos, 40 hechos, 28 preguntas, 46 fuentes) y una separación
+  explícita entre lo que anda hoy y lo que todavía no.
+- La redacción queda en el centro: "nada de esto reemplaza a la redacción; lo
+  que cambia es cómo le llega al lector".
+
+---
+## v1.22.0 · 19-08-2026
+
+- **`pages/vision.html`**: el alcance completo del proyecto, reorganizado en
+  cinco bloques —por dónde le hablás, qué hace el diario, de dónde sale la
+  información, cómo lo recibís y qué elegís vos—.
+- Cada una de las 26 piezas lleva su estado: **Anda** (13), **En camino** (4) o
+  **Previsto** (12). La ambición queda a la vista sin confundirse con lo que
+  ya funciona.
+- El bloque del medio evita el "robot que escribe noticias": el diario
+  recuerda, prioriza, distingue, transforma y avisa. Y se aclara que el trabajo
+  periodístico no está en esa lista a propósito.
+- La propuesta enlaza a la visión, y la visión al recorrido.
+
+---
+## v1.23.0 · 07-09-2026
+
+**Contenido**
+
+- **Ruta 22 actualizada**: el traspaso se firmó el 25-08 en Casa Rosada y la
+  Legislatura lo ratificó el 03-09 con 38 votos contra 3. Emergencia vial por
+  un año, crédito de hasta US$60 millones con Fonplata, 518 km por 20 años.
+  Las obras arrancan 60 días después de publicada la ley y Nación no aporta.
+  Fuentes: Diario Neuquino, ADNSUR, NoticiasNet, Baires Post, Bariloche2000,
+  LCR, ANRoca y Quorum.
+- **Hilo nuevo: Vaca Muerta.** El VMOS —437 km de Allen a Punta Colorada,
+  US$3.000 millones, más del 80% ejecutado—, el récord de producción de 2026 y
+  el costado local: 2.000 camiones de arena por día y regalías fuertes recién
+  hacia 2028. Fuentes: Ámbito, Parlamentario, EconoJournal, iProfesional, VMOS,
+  LM Neuquén, ANRoca, Diario Neuquino y Cenital.
+- El hilo de Vaca Muerta se cruza con el de la Ruta 22: los camiones que rompen
+  la ruta son los que sostienen el negocio que garantiza el crédito.
+- Ocho historias en seis temas.
+
+**Lectores de ejemplo**
+
+- Pasan a ser Juan Carlos (energía y ruta), Horacio (productor frutícola),
+  Hugo (periodista) y Yo. Cada uno con sus temas, su duración de boletín y sus
+  hilos seguidos: ven entre 3 y 5 de las 8 historias.
+- "Yo" deja de ser el botón de limpiar y pasa a tener su propia configuración:
+  Vaca Muerta, Municipio y Clima.
+- Todo el cambio alcanza también al chat, al bot de Telegram y al boletín de
+  audio, porque salen del mismo contenido y del mismo motor.
+
+---
+## v1.24.0 · 07-09-2026
+
+- **Se saca el listado de fuentes externas de la interfaz.** En un diario
+  propio el contenido lo firma su redacción; citar a otros medios lo convertía
+  en un agregador. Desaparecen la sección "Fuentes" de las historias vivas, el
+  medio al pie de cada hito y el bloque de fuentes en las respuestas del chat.
+- Los datos quedan en los JSON como registro interno de dónde salió cada cosa
+  mientras se arma la demostración, pero no se publican.
+- La transparencia se sostiene con lo que sí es propio: quién sigue el tema,
+  los hechos verificados con su fecha y las preguntas todavía abiertas.
+- Los hechos confirmados pasan de "Dato del…" a "Verificado el…", que es lo
+  que corresponde cuando la verificación es de la casa.
+- Las credenciales del hilo quedan en tres números: hitos reconstruidos,
+  hechos verificados y preguntas sin respuesta.
+
+---
+## v1.25.0 · 07-09-2026
+
+- **Corrección: faltaba "Escuchar el resumen"** en Vaca Muerta, Agua en Roca,
+  Fruticultura y Clima y rutas. Los clips existían y se generaban, pero el mapa
+  que los vincula con cada historia solo tenía las cuatro primeras. Ahora están
+  las ocho.
+- Fotos en cuatro historias: el tendido del oleoducto en Vaca Muerta, el render
+  de la planta potabilizadora en Agua en Roca, la ruta mojada con niebla en
+  Clima y la chacra bajo malla antigranizo en Fruticultura.
+- El render de la planta queda acreditado como tal, no como fotografía.
+
+---
+## v1.26.0 · 08-09-2026
+
+**Edición Grupo**
+
+- **`js/tema.js`**: dos identidades para la misma aplicación. Se activa con
+  `?grupo=1` y se apaga con `?grupo=0`. No hay proyecto paralelo ni segunda
+  hoja de estilos: el tema es un atributo en `<html>`.
+- Se midieron los cuatro logos y comparten el mismo rojo (#E01F28) y el mismo
+  negro (#181818); Literal aporta un azul (#204060). Por eso el tema solo suma
+  dos colores en vez de conciliar cuatro paletas.
+- **El ocre no se toca.** Sigue siendo el color de Tu Canillita; el rojo del
+  Grupo aparece únicamente donde habla el ecosistema.
+- Los 16 colores que estaban escritos a mano en las hojas de estilo pasaron a
+  ser variables. Ahora el 100% de la paleta se cambia en un solo lugar.
+- **Procedencia editorial**: cada historia declara `origen` en su JSON, con la
+  marca donde se publicó y los formatos que integra. La interfaz lo renderiza
+  sola: una línea si hay una fuente, un bloque si hay varias.
+- **"Una historia, varios formatos"** en las páginas de hilo: texto, audio y
+  análisis con su marca. El audio original figura como pendiente de enlazar y
+  se aclara que el resumen hablado es voz sintética.
+- **El esquema del ecosistema** en la portada: cuatro medios, Tu Canillita, tu
+  edición personalizada.
+- No se tocó nada del motor, el chat, el recorrido, Telegram ni las personas.
+
+---
+## v1.27.0 · 08-09-2026
+
+- Se quitan el esquema del ecosistema y el bloque "una historia, varios
+  formatos": explicaban el producto en vez de usarlo. Eso va en la
+  presentación, no en la aplicación.
+- **El aviso de la voz se muda adonde suena**: aparece debajo de cada
+  reproductor, no en un bloque aparte, y habla de las voces de los periodistas
+  del Grupo en lugar del "audio original de la radio".
+- Más presencia del ecosistema en la Edición Grupo: filete de marca al tope de
+  la página, el rojo en el filete de la fecha, en la etiqueta de edición, en
+  las credenciales, en la acción del canal y en la vista activa. El azul de
+  Literal pasa al botón de seguir.
+- El ocre sigue siendo de Tu Canillita: volantas, capitular y recuento.
+
+---
+## v1.28.0 · 11-09-2026
+
+- **Código QR** para la presentación: `assets/qr/` trae el código en SVG, en
+  PNG y con rótulo listo para diapositiva o impresión. Apunta a
+  `?grupo=1&demo=1` y usa corrección de errores alta, que tolera reflejos y
+  manchas al proyectarlo.
+- **`?demo=1` ahora reinicia la demostración.** Quien escanea no hereda el
+  lector, los temas ni las novedades de quien usó el aparato antes: el
+  recorrido arranca siempre desde el primer paso y con el estado en blanco.
+- El parámetro `demo` se saca de la dirección apenas arranca. Sin eso, elegir
+  un lector —que recarga la página— volvía a disparar el reinicio y borraba lo
+  que la persona acababa de elegir. El parámetro `grupo` se conserva.
+- Corrección en `preferences.reiniciar()`: `read()` guarda una copia en
+  memoria, así que borrar el almacenamiento no alcanzaba. Ahora también suelta
+  la copia.
+
+---
+## v1.29.0 · 29-09-2026
+
+Tres semanas sin tocar el contenido y el valle se movió bastante. Esta versión
+pone los hilos al día y suma un quinto lector.
+
+Se arma sobre la v1.28. El trabajo de identidad de marca —logotipo, isotipo,
+íconos y favicons— queda afuera a propósito: estaba sin aprobar, la variante
+de isotipo seguía en discusión y nunca se desplegó.
+
+**Contenido: cinco hilos actualizados**
+
+- **Messi.** La pregunta que el hilo tenía abierta desde julio —si seguía en la
+  Selección— tiene respuesta: el 31 de agosto anunció el retiro por Instagram,
+  con un mensaje que había escrito el 21 de julio y guardó cuarenta y tres
+  días. Cierra con 207 partidos, 125 goles y seis títulos. Se suman la muerte
+  de Jorge Messi el 8 de agosto, la despedida del 6 de octubre ante Benín en el
+  Monumental y la confirmación de Cuti Romero como capitán. La continuidad de
+  Scaloni pasa a ser la pregunta abierta del hilo.
+- **Vaca Muerta.** Cambió el eje: la obra del caño terminó en agosto, con el
+  "apto para funcionar" de Techint y Sacde, así que el cuello de botella ahora
+  es la terminal. Entran el tanque 404 de Punta Colorada —y Martín Gómez, de
+  San Antonio Oeste, que opera el primer llenado—, el bono de 233,65 millones
+  de dólares colocado el 23 de septiembre y la fecha del 15 de diciembre para
+  la conexión de Allen.
+- **Ruta 22.** Hoy se promulgó la Ley 5895 (Decreto 901/26): 7.000 millones de
+  pesos del aporte territorial de Oldelval. Se incluye la aclaración del propio
+  Weretilneck sobre el alcance —"bacheo, tapar pozos, sacar huellones, cosas
+  muy preliminares"—, los cuatro puntos críticos y el estado del crédito del
+  Fonplata.
+- **Clima y rutas.** El hilo dejó de hablar del frío polar de agosto, que en
+  septiembre ya no existe, y pasó a las heladas tardías: tres alertas en once
+  días, hasta -7 °C con los frutales en flor, el riego por aspersión como
+  defensa y una floración que el INTA da por atrasada.
+- **Fruticultura.** Se enlaza con lo anterior: cerró la campaña 2026 y empezó
+  la siguiente, con la floración en marcha y el daño de las heladas todavía sin
+  contabilizar.
+
+**Personalización: cinco lectores**
+
+- Se suma **Nicolás**, de Cipolletti, que cruza el puente a Neuquén todas las
+  mañanas: deportes, clima y ruta, solo audio, un minuto, velocidad ágil. Sigue
+  el hilo de Messi y el del clima.
+- El criterio quedó escrito en `js/personas.js`: cada lector se tiene que
+  diferenciar en algo que se vea apenas cambia la pantalla. Como la Ruta 22 y
+  Vaca Muerta le interesan a casi todo el valle, la diferencia no puede
+  apoyarse solo en los temas, y por eso cada uno varía además en formato,
+  tiempo disponible e hilos seguidos. Los cinco reciben novedades distintas.
+
+**Hilos con agenda**
+
+- Un hito de la cronología puede marcarse `upcoming`: es un capítulo con fecha
+  que todavía no ocurrió. Se dibuja con el punto hueco y el rótulo "todavía no
+  pasó", y el chat lo aclara al enumerarlo. Un hilo vivo tiene próxima entrega;
+  confundirla con un hecho consumado, en una demo que se muestra en vivo, sería
+  el peor error posible. Hoy lo usan Messi (6 de octubre), Vaca Muerta (15 de
+  diciembre) y la Ruta 22 (noviembre).
+
+**Chat**
+
+- La respuesta "¿Messi se retira de la Selección?" decía que no lo había dicho.
+  Reescrita.
+- Nueva respuesta: "¿Cuándo es la despedida de Messi?", con intención propia
+  para no contestar en pasado algo que todavía no pasó.
+- Actualizadas las respuestas del traspaso de la Ruta 22 y del VMOS.
+- Al listar los últimos hitos de un hilo, cuando todos caen en el mismo año se
+  muestra el día y el mes: cuatro veces "2026" no informaba nada.
+
+**Correcciones**
+
+- El paso del recorrido guiado decía "Tres lectores" cuando ya eran cuatro. La
+  cifra ahora se calcula sobre la lista real.
+- En la Edición Grupo, el lector elegido quedaba pintado de ocre mientras el
+  resto de la pantalla era rojo de marca. Ahora toma el rojo.
+- La barra de secciones se desliza, pero sin scrollbar el corte se leía como
+  texto roto ("Vaca Muer"). Los últimos píxeles se desvanecen.
+- El generador de audio no limpiaba el rango Unicode 2300-23FF, así que el
+  reloj de arena ⏳ se colaba en el texto que lee Piper.
+- El workflow del boletín ahora también se dispara cuando cambian
+  `js/responses.js`, `js/intents.js` o los generadores. Cada respuesta del chat
+  tiene su clip grabado: al reescribir una sin regenerar el audio, la voz
+  quedaba diciendo lo viejo mientras el texto ya decía lo nuevo.
+
+---
+## v1.30.0 · 16-10-2026
+
+La Edición Grupo deja de apuntar al ecosistema de LM y pasa a apuntar al de
+Río Negro. Es la misma aplicación y el mismo parámetro `?grupo=1`: cambian el
+acento, las marcas y la procedencia de cada historia.
+
+**Edición Río Negro**
+
+- El ecosistema pasa a ser **Diario Río Negro · Río Negro Radio · Podcasts**.
+  Son tres bocas de una sola redacción, no tres marcas que haya que conciliar,
+  así que el tema necesita un acento y no cuatro.
+- Bajada: "Con el periodismo de Río Negro, desde 1912".
+- Paleta nueva en `:root[data-tema="grupo"]`. **El rojo está tomado a ojo de la
+  cabecera y hay que confirmarlo contra el manual de marca**; es una sola
+  variable, se corrige en un lugar.
+- El identificador del tema sigue siendo `grupo` y el parámetro sigue siendo
+  `?grupo=1`, a propósito: el QR impreso apunta ahí.
+
+**Afuera los competidores**
+
+- La procedencia de las ocho historias deja de nombrar a LM Neuquén, LM
+  Cipolletti, Literal y LU5, y pasa a Diario Río Negro, Río Negro Radio y
+  Podcasts según el formato de cada una.
+- Ocho fuentes publicadas por medios de la competencia se reapuntaron a
+  cobertura propia del Río Negro o a medios que no compiten con él. Donde el
+  artículo nuevo no respaldaba el dato viejo, se quitó el dato en lugar de
+  reatribuirlo: cayeron el inicio de obras "en noviembre sobre 305 km", la
+  lista de cuatro puntos críticos, la autopista General Godoy–Cipolletti y un
+  hito de marzo sobre concesiones.
+- Salen **Techint y Sacde** del hilo de Vaca Muerta, que compiten con OPS. El
+  hecho se mantiene: "las contratistas obtuvieron el apto para funcionar".
+- Sale el perfil del operador del primer tanque, que era reporteo propio del
+  otro diario. El dato del tanque queda, con otra fuente.
+- El dato de "más de 2.000 camiones de arena por día" se cayó con su única
+  fuente. En su lugar van los 100 a 150 camiones diarios entre la ruta 6 y el
+  oeste del valle, con las canteras de Villa Regina y la báscula de
+  Chichinales, que sí tiene cobertura propia del diario.
+
+**Declaración de interés**
+
+- Donde una historia toca una empresa del grupo, queda constancia dentro del
+  cuerpo de la nota, al mismo nivel que cualquier otro dato y sin destaque: en
+  Ruta 22, que OPS es contratista de Oldelval en otro de sus ductos; en
+  fruticultura, que Global Fresh produce en el valle. En Vaca Muerta no se
+  declara nada porque no se encontró participación del grupo en el VMOS, y
+  declarar un vínculo que no existe sería peor que no declarar ninguno.
+
+**Contenido al 16 de octubre**
+
+- **Messi.** El hilo se cerró. El 6 de octubre se despidió en un Monumental
+  lleno: Argentina 3 - Benín 0, gol suyo de penal —el 126 de su ciclo— y las
+  dos asistencias restantes. Cierra con 208 partidos. El hito que estaba
+  marcado como "todavía no pasó" pasó a ser un hecho, que era exactamente la
+  prueba que faltaba de que esa marca se mantiene. Queda abierta una sola
+  pregunta: si Scaloni renueva.
+- **Ruta 22.** Noticia del día: Weretilneck anticipó que la firma con Vialidad
+  Nacional es el 29 de octubre y que las obras arrancan a fines de noviembre.
+  Entran los tramos liberados (143 km, 135 km y 49 km), los 77 que siguen
+  trabados, el caso del Puente 83 y el aval nacional al crédito del Fonplata,
+  cuyo desembolso grande el gobernador ubicó en marzo o abril de 2027.
+- **Vaca Muerta.** Llegaron las monoboyas a San Antonio Este el 5 de octubre:
+  era la última pieza para poder cargar un buque.
+- **Clima y fruticultura.** La floración se presenta abundante —"está todo
+  explotado de flores"— pero el período crítico de heladas sigue hasta la
+  primera semana de noviembre y el volumen lo define el cuaje.
+
+**Lectores**
+
+- Carlos, Sergio, Federico, Mauro y Yo. Federico dirige la redacción, así que
+  su edición es la única sin filtrar: ve los seis temas, en todos los formatos.
+  Los otros ven lo suyo, y los cinco reciben novedades distintas.
+- Los perfiles describen qué lee cada uno y nada más, sin biografía ni datos
+  personales. Es deliberado: estos nombres pueden estar sentados en la sala.
+
+---
+## v1.30.1 · 18-10-2026
+
+- **El rojo del diario, medido.** La v1.30.0 llevaba `#D32A24`, puesto a ojo
+  porque el entorno no deja leer el sitio. Medido sobre el logotipo, el valor
+  real es **`#DE0303`**: el trazo es plano, un solo color en el 100% de los
+  píxeles. El anterior era bastante más apagado y marrón.
+- Contraste verificado: 4,64:1 sobre el papel y 5,10:1 con blanco encima, los
+  dos pasan AA. Sobre el negro de la chapa da 3,54:1, y por eso ahí el rojo
+  queda en separadores y filetes, nunca en texto chico.
+- `--marca-papel` se recalculó como el mismo rojo al 8%: `#FCEBEB`.
+- **La volanta de categoría toma el rojo** en la Edición Río Negro. Es lo que
+  hace que cada ficha de la portada se lea como una nota del diario sin tocar
+  el cuerpo del texto, que sigue siendo el de Tu Canillita. Una sola regla.
+- La volanta de las páginas de hilo queda en ocre claro a propósito: vive
+  sobre el negro de la cabecera, donde el rojo cae a 3,54:1 y en un cuerpo de
+  .72rem espaciado deja de leerse.
+
+---
+## v1.30.2 · 18-10-2026
+
+- **Las claves de almacenamiento llevan la edición adentro.** GitHub Pages
+  sirve todos los proyectos de una cuenta desde el mismo dominio, así que dos
+  despliegues —en dos repos o en dos carpetas— comparten el mismo
+  `localStorage`. Sin prefijo, abrir una demo después de la otra arrastraba el
+  lector elegido, el tema, el paso del recorrido y la última visita; y como
+  los lectores no se llaman igual en las dos ediciones, la barra quedaba sin
+  nadie seleccionado y las novedades salían vacías.
+- `js/version.js` declara `Canillita.edicion` y arma las claves: esta copia
+  escribe en `canillita.global.*`. La edición Schroeder, mientras no se toque,
+  sigue usando las claves sin prefijo, así que las dos conviven sin pisarse.
+- La derivación es defensiva: si `version.js` faltara, cada módulo cae en la
+  clave vieja en lugar de romperse.
+
+---
+## v1.30.3 · 18-10-2026
+
+Preparación para desplegar esta edición en su propio repositorio, al lado de
+la de Schroeder y sin pisarla.
+
+- **El Worker del bot pasa a llamarse `canillita-bot-global`.** El nombre en
+  `wrangler.toml` es el identificador del Worker en Cloudflare: dos repos con
+  el mismo nombre despliegan encima del mismo bot y el último que corre se lo
+  queda. Como el workflow del bot se dispara con cualquier cambio en `js/` o
+  en `content/`, el primer push del repo nuevo lo habría activado solo.
+- `SITIO` apunta a `mcanosam.github.io/canillitaglobal`.
+- **QR propio** en `assets/qr/`: `demo-global.svg`, `demo-global.png` y
+  `demo-global-rotulado.png`, con corrección de errores alta y verificados con
+  un decodificador. Apuntan a `?grupo=1&demo=1` de la URL nueva.
+- Se quitaron los QR de la edición anterior, que apuntaban al despliegue de
+  Schroeder y acá solo podían confundir.
+
+---
+## v1.30.4 · 19-10-2026
+
+- El respaldo de `SITIO` en `bot/worker.js` apuntaba al sitio de la otra
+  edición. Lo normal es que `wrangler.toml` lo defina y el respaldo no se use
+  nunca, pero si alguna vez faltara, el bot de esta edición habría ido a
+  buscar el audio al despliegue de Schroeder. Ahora apunta a su propio sitio.
+
+---
+## v1.30.5 · 19-10-2026
+
+- `bot/README.md` todavía mandaba a registrar el webhook contra
+  `canillita-bot`, el Worker de la otra edición. Ahora dice
+  `canillita-bot-global`, que es el que despliega este repo.
+- Se agregó arriba de los pasos la advertencia de que esta edición necesita su
+  propio bot: en Telegram el bot *es* su token, así que reusar el anterior
+  dejaría al bot de la otra demo respondiendo con este contenido.
+
+---
+## v1.30.6 · 19-10-2026
+
+- Los cuatro botones de "Abrir en Telegram" apuntaban a `t.me/TuCanillitaBot`,
+  que es el bot de la otra edición. Ahora van a `t.me/tucanillitaglobal_bot`.
+  Estaban en `index.html`, en `pages/chat.html` (dos) y en el selector de
+  canal de `js/render.js`.
+- Era el único lugar del proyecto donde el nombre de usuario del bot está
+  escrito a mano: el Worker no necesita saber cómo se llama, porque Telegram
+  le entrega las actualizaciones por el webhook.
+
+---
+
+## v1.6.0 · 07-08-2026
+
+**Contenido**
+
+- La nota de actualidad de la Ruta 22 pasa a encabezarse con el estado de la
+  calzada tras las lluvias: pozos destapados, bacheo en frío lavado por el
+  agua, talleres desbordados y el pedido de una Mesa Regional de Emergencia.
+- Siete fuentes nuevas, fechadas entre el 30-07 y el 06-08-2026.
+- La cronología encadena la noticia del día con la historia larga: el tramo que
+  se inunda entre Cervantes y Roca es el mismo que nunca se ejecutó.
+
+**Interfaz**
+
+- Se quita el recuadro "Qué podés probar" del chat.
+- Se quita el botón "Ver el guion": el guion aparece solo al reproducir.
+- Barra de secciones fija con "Mi edición" y "Ruta 22", presente en las tres
+  pantallas. La edición dejó de depender de un botón que aparecía a veces.
+
+---
+
+## v1.5.0 · 07-08-2026
+
+- Rediseño completo: identidad de diario de provincia. Chapa en negativo con
+  el nombre en condensada, filetes horizontales, volantas en recuadro ocre,
+  bajadas en cursiva, letra capitular y texto de lectura en serifa.
+- Paleta nueva: tinta sobre papel con el ocre de las bardas como único acento.
+  Se eliminan las esquinas redondeadas.
+- Las burbujas del chat se convierten en bloques de papel con filete.
+
+---
+
+## v1.4.0 · 07-08-2026
+
+- Las diecisiete respuestas del motor de reglas se generan como clips de audio
+  con Piper. En el chat aparece un botón para escuchar cada respuesta.
+- `responses.js`, `intents.js` y `content.js` pasan a correr también en Node,
+  para que los clips salgan del mismo motor que responde en pantalla.
+- El workflow se dispara además al editar `content/*.json`: publicar una
+  noticia regenera el audio.
+- Corrección: al reproducir un clip mientras sonaba otro, el botón pausaba el
+  anterior en vez de arrancar el nuevo.
+
+---
+
+## v1.3.0 · 07-08-2026
+
+- El boletín pasa a generarse con **Piper TTS** (voz `es_AR-daniela-high`) en
+  GitHub Actions y se publica como MP3 y OGG en el repositorio.
+- El reproductor prioriza el archivo grabado; la voz del navegador queda como
+  respaldo.
+- Marcas de tiempo por bloque para resaltar el guion mientras suena.
+- Corrección: el archivo se reproducía a 1,15× por arrastrar un multiplicador
+  pensado para la voz del navegador.
+
+---
+
+## v1.2.0 · 06-08-2026
+
+- Fase 3: generador de guion radial separado del contenido, prosodia y pausas
+  por bloque, normalizador de números y controles de velocidad.
+- Reproducción con Web Speech API y guion siempre visible como texto.
+
+---
+
+## v1.1.0 · 06-08-2026
+
+- Fase 2: edición personalizada (`pages/edicion.html`) e historia viva de la
+  Ruta 22 (`pages/ruta22.html`), conectadas con el chat en las dos direcciones.
+- `router.js` para las rutas relativas y `render.js` para las piezas de HTML
+  compartidas.
+- Corrección: los mensajes escritos mientras el agente respondía se perdían en
+  silencio; ahora se encolan.
+
+---
+
+## v1.0.0 · 06-08-2026
+
+- Fase 1: estructura del proyecto, las tres historias en JSON, simulador del
+  canal WhatsApp y motor conversacional por reglas con dieciocho intenciones.
+- Contenido de la Ruta 22 verificado con fuentes periodísticas y oficiales.
+- La noticia deportiva queda marcada como ficticia en todos los formatos.
+
+---
+
+*Las versiones 1.0 a 1.5 se numeraron en retrospectiva, al incorporar este
+historial en la 1.6. Las fechas corresponden al día de trabajo, no a
+publicaciones separadas.*
