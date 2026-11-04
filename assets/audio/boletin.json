@@ -4,7 +4,7 @@
   "voice": "es_AR-daniela-high",
   "engine": "Piper TTS",
   "version": "1.30.6",
-  "generatedAt": "2026-11-03T17:30:03.640Z",
+  "generatedAt": "2026-11-04T18:00:28.530Z",
   "baseRate": 1,
   "duration": 165.07,
   "segments": [
@@ -14,7 +14,7 @@
     },
     {
       "kind": "saludo",
-      "text": "Son las dos y media de la tarde. Buenas tardes."
+      "text": "Son las tres en punto de la tarde. Buenas tardes."
     },
     {
       "kind": "titular",
@@ -100,75 +100,75 @@
     },
     {
       "segment": 2,
-      "start": 5.181
+      "start": 5.316
     },
     {
       "segment": 3,
-      "start": 9.538
+      "start": 9.789
     },
     {
       "segment": 4,
-      "start": 69.843
+      "start": 69.76
     },
     {
       "segment": 5,
-      "start": 71.131
+      "start": 71.023
     },
     {
       "segment": 6,
-      "start": 75.454
+      "start": 75.32
     },
     {
       "segment": 7,
-      "start": 77.222
+      "start": 77.146
     },
     {
       "segment": 8,
-      "start": 81.22
+      "start": 81.059
     },
     {
       "segment": 9,
-      "start": 83.038
+      "start": 82.912
     },
     {
       "segment": 10,
-      "start": 87.503
+      "start": 87.362
     },
     {
       "segment": 11,
-      "start": 88.75
+      "start": 88.664
     },
     {
       "segment": 12,
-      "start": 92.674
+      "start": 92.57
     },
     {
       "segment": 13,
-      "start": 94.442
+      "start": 94.383
     },
     {
       "segment": 14,
-      "start": 97.962
+      "start": 97.992
     },
     {
       "segment": 15,
-      "start": 150.814
+      "start": 150.706
     },
     {
       "segment": 16,
-      "start": 152.757
+      "start": 152.634
     },
     {
       "segment": 17,
-      "start": 155.494
+      "start": 155.337
     },
     {
       "segment": 18,
-      "start": 157.367
+      "start": 157.275
     },
     {
       "segment": 19,
-      "start": 161.956
+      "start": 161.96
     }
   ]
 }
