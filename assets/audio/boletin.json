@@ -4,9 +4,9 @@
   "voice": "es_AR-daniela-high",
   "engine": "Piper TTS",
   "version": "1.30.6",
-  "generatedAt": "2026-11-04T18:00:28.530Z",
+  "generatedAt": "2026-11-05T17:48:40.321Z",
   "baseRate": 1,
-  "duration": 165.07,
+  "duration": 165.67,
   "segments": [
     {
       "kind": "identificacion",
@@ -14,7 +14,7 @@
     },
     {
       "kind": "saludo",
-      "text": "Son las tres en punto de la tarde. Buenas tardes."
+      "text": "Son las dos y cuarenta y ocho de la tarde. Buenas tardes."
     },
     {
       "kind": "titular",
@@ -100,75 +100,75 @@
     },
     {
       "segment": 2,
-      "start": 5.316
+      "start": 5.725
     },
     {
       "segment": 3,
-      "start": 9.789
+      "start": 10.071
     },
     {
       "segment": 4,
-      "start": 69.76
+      "start": 70.281
     },
     {
       "segment": 5,
-      "start": 71.023
+      "start": 71.56
     },
     {
       "segment": 6,
-      "start": 75.32
+      "start": 75.878
     },
     {
       "segment": 7,
-      "start": 77.146
+      "start": 77.67
     },
     {
       "segment": 8,
-      "start": 81.059
+      "start": 81.586
     },
     {
       "segment": 9,
-      "start": 82.912
+      "start": 83.388
     },
     {
       "segment": 10,
-      "start": 87.362
+      "start": 87.812
     },
     {
       "segment": 11,
-      "start": 88.664
+      "start": 89.047
     },
     {
       "segment": 12,
-      "start": 92.57
+      "start": 92.957
     },
     {
       "segment": 13,
-      "start": 94.383
+      "start": 94.673
     },
     {
       "segment": 14,
-      "start": 97.992
+      "start": 98.273
     },
     {
       "segment": 15,
-      "start": 150.706
+      "start": 151.385
     },
     {
       "segment": 16,
-      "start": 152.634
+      "start": 153.29
     },
     {
       "segment": 17,
-      "start": 155.337
+      "start": 155.981
     },
     {
       "segment": 18,
-      "start": 157.275
+      "start": 157.87
     },
     {
       "segment": 19,
-      "start": 161.96
+      "start": 162.546
     }
   ]
 }
