@@ -2,173 +2,173 @@
   "voice": "es_AR-daniela-high",
   "engine": "Piper TTS",
   "version": "1.30.6",
-  "generatedAt": "2026-11-25T19:44:32.201Z",
+  "generatedAt": "2026-11-26T19:24:42.910Z",
   "answers": {
     "ruta22-actualidad": {
       "url": "assets/audio/respuestas/ruta22-actualidad.mp3",
       "urlOpus": "assets/audio/respuestas/ruta22-actualidad.ogg",
-      "duration": 93.27,
+      "duration": 93.77,
       "question": "Ruta 22 hoy",
       "intent": "route22_current"
     },
     "ruta22-historia": {
       "url": "assets/audio/respuestas/ruta22-historia.mp3",
       "urlOpus": "assets/audio/respuestas/ruta22-historia.ogg",
-      "duration": 64.48,
+      "duration": 64.97,
       "question": "Ver la historia de la Ruta 22",
       "intent": "route22_history"
     },
     "ruta22-por-que": {
       "url": "assets/audio/respuestas/ruta22-por-que.mp3",
       "urlOpus": "assets/audio/respuestas/ruta22-por-que.ogg",
-      "duration": 37.47,
+      "duration": 37.01,
       "question": "¿Por qué se frenó la Ruta 22?",
       "intent": "route22_reason_stopped"
     },
     "ruta22-tramos": {
       "url": "assets/audio/respuestas/ruta22-tramos.mp3",
       "urlOpus": "assets/audio/respuestas/ruta22-tramos.ogg",
-      "duration": 51.9,
+      "duration": 51.77,
       "question": "¿Qué tramo está terminado?",
       "intent": "route22_status"
     },
     "ruta22-roca": {
       "url": "assets/audio/respuestas/ruta22-roca.mp3",
       "urlOpus": "assets/audio/respuestas/ruta22-roca.ogg",
-      "duration": 45.68,
+      "duration": 45.89,
       "question": "¿Qué pasó en General Roca?",
       "intent": "route22_roca"
     },
     "ruta22-traspaso": {
       "url": "assets/audio/respuestas/ruta22-traspaso.mp3",
       "urlOpus": "assets/audio/respuestas/ruta22-traspaso.ogg",
-      "duration": 65.86,
+      "duration": 66.04,
       "question": "¿Río Negro ya se hizo cargo?",
       "intent": "route22_province"
     },
     "ruta22-neutralizados": {
       "url": "assets/audio/respuestas/ruta22-neutralizados.mp3",
       "urlOpus": "assets/audio/respuestas/ruta22-neutralizados.ogg",
-      "duration": 29.03,
+      "duration": 29.18,
       "question": "¿Qué son los contratos neutralizados?",
       "intent": "route22_neutralized"
     },
     "ruta22-peaje": {
       "url": "assets/audio/respuestas/ruta22-peaje.mp3",
       "urlOpus": "assets/audio/respuestas/ruta22-peaje.ogg",
-      "duration": 29.88,
+      "duration": 30.27,
       "question": "¿Va a haber peaje?",
       "intent": "route22_toll"
     },
     "seccion1": {
       "url": "assets/audio/respuestas/seccion1.mp3",
       "urlOpus": "assets/audio/respuestas/seccion1.ogg",
-      "duration": 19.52,
+      "duration": 19.32,
       "question": "Sección 1",
       "intent": "route22_section:seccion1"
     },
     "seccion2": {
       "url": "assets/audio/respuestas/seccion2.mp3",
       "urlOpus": "assets/audio/respuestas/seccion2.ogg",
-      "duration": 22.3,
+      "duration": 22.73,
       "question": "Sección 2",
       "intent": "route22_section:seccion2"
     },
     "seccion3": {
       "url": "assets/audio/respuestas/seccion3.mp3",
       "urlOpus": "assets/audio/respuestas/seccion3.ogg",
-      "duration": 27.13,
+      "duration": 27.2,
       "question": "Sección 3",
       "intent": "route22_section:seccion3"
     },
     "seccion4": {
       "url": "assets/audio/respuestas/seccion4.mp3",
       "urlOpus": "assets/audio/respuestas/seccion4.ogg",
-      "duration": 18.19,
+      "duration": 18.22,
       "question": "Sección 4",
       "intent": "route22_section:seccion4"
     },
     "seccion5": {
       "url": "assets/audio/respuestas/seccion5.mp3",
       "urlOpus": "assets/audio/respuestas/seccion5.ogg",
-      "duration": 24.57,
+      "duration": 24.58,
       "question": "Sección 5",
       "intent": "route22_section:seccion5"
     },
     "tramo6": {
       "url": "assets/audio/respuestas/tramo6.mp3",
       "urlOpus": "assets/audio/respuestas/tramo6.ogg",
-      "duration": 25.32,
+      "duration": 25.47,
       "question": "¿Qué pasa en Cipolletti?",
       "intent": "route22_section:tramo6"
     },
     "deportes": {
       "url": "assets/audio/respuestas/deportes.mp3",
       "urlOpus": "assets/audio/respuestas/deportes.ogg",
-      "duration": 33.43,
+      "duration": 33.34,
       "question": "Ver deportes",
       "intent": "sports"
     },
     "deportes-proximo": {
       "url": "assets/audio/respuestas/deportes-proximo.mp3",
       "urlOpus": "assets/audio/respuestas/deportes-proximo.ogg",
-      "duration": 19.28,
+      "duration": 19.16,
       "question": "¿Cuándo juega Deportivo Roca?",
       "intent": "sports_next"
     },
     "vacamuerta": {
       "url": "assets/audio/respuestas/vacamuerta.mp3",
       "urlOpus": "assets/audio/respuestas/vacamuerta.ogg",
-      "duration": 75.77,
+      "duration": 75.75,
       "question": "Contame lo de Vaca Muerta",
       "intent": "vacamuerta"
     },
     "vmos": {
       "url": "assets/audio/respuestas/vmos.mp3",
       "urlOpus": "assets/audio/respuestas/vmos.ogg",
-      "duration": 70.98,
+      "duration": 70.94,
       "question": "¿Qué es el VMOS?",
       "intent": "vmos"
     },
     "agua": {
       "url": "assets/audio/respuestas/agua.mp3",
       "urlOpus": "assets/audio/respuestas/agua.ogg",
-      "duration": 62.73,
+      "duration": 62.4,
       "question": "Contame la obra de agua de Roca",
       "intent": "agua_roca"
     },
     "fruticultura": {
       "url": "assets/audio/respuestas/fruticultura.mp3",
       "urlOpus": "assets/audio/respuestas/fruticultura.ogg",
-      "duration": 71.15,
+      "duration": 70.55,
       "question": "¿Cómo viene la fruticultura?",
       "intent": "fruticultura"
     },
     "clima": {
       "url": "assets/audio/respuestas/clima.mp3",
       "urlOpus": "assets/audio/respuestas/clima.ogg",
-      "duration": 73.72,
+      "duration": 73.65,
       "question": "¿Cómo están las rutas?",
       "intent": "clima_rutas"
     },
     "messi": {
       "url": "assets/audio/respuestas/messi.mp3",
       "urlOpus": "assets/audio/respuestas/messi.ogg",
-      "duration": 42.28,
+      "duration": 41.58,
       "question": "Contame el hilo de Messi",
       "intent": "messi"
     },
     "messi-final": {
       "url": "assets/audio/respuestas/messi-final.mp3",
       "urlOpus": "assets/audio/respuestas/messi-final.ogg",
-      "duration": 26.56,
+      "duration": 26.67,
       "question": "¿Cómo salió la final del Mundial 2026?",
       "intent": "messi_final"
     },
     "messi-retiro": {
       "url": "assets/audio/respuestas/messi-retiro.mp3",
       "urlOpus": "assets/audio/respuestas/messi-retiro.ogg",
-      "duration": 45.05,
+      "duration": 44.54,
       "question": "¿Messi se retira de la Selección?",
       "intent": "messi_retiro"
     },
@@ -182,7 +182,7 @@
     "fuera-de-alcance": {
       "url": "assets/audio/respuestas/fuera-de-alcance.mp3",
       "urlOpus": "assets/audio/respuestas/fuera-de-alcance.ogg",
-      "duration": 9.53,
+      "duration": 9.73,
       "question": "¿Qué pasa con el dólar?",
       "intent": "unknown"
     }
